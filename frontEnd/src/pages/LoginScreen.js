@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AppAppBar from '../components/AppAppBar';
 
 function Copyright(props) {
   return (
@@ -44,6 +45,7 @@ export default function LoginScreen() {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+        <AppAppBar />
         <Box
           sx={{
             marginTop: 8,

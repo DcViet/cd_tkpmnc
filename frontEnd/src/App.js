@@ -1,10 +1,10 @@
 // import logo from './logo.svg';
 import './App.css';
-import LoginScreen from './components/LoginScreen';
-import TripListScreen from './components/TripListScreen';
-// import DriverHomeScreen from './components/DriverHomeScreen';
-// import AvailableTripsScreen from './components/AvailableTripsScreen';
-// import TripDetailsScreen from './components/TripDetailsScreen';
+import LoginScreen from './pages/LoginScreen';
+import TripListScreen from './pages/TripListScreen';
+// import DriverHomeScreen from './pages/DriverHomeScreen';
+// import AvailableTripsScreen from './pages/AvailableTripsScreen';
+// import TripDetailsScreen from './pages/TripDetailsScreen';
 
 
 function App() {
