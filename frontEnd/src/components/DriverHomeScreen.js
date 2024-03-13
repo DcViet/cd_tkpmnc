@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Typography, Button, Grid } from '@mui/material';
+import '../css/DriverHomeScreen.css'; // Import CSS file for styling
 
 function DriverHomeScreen() {
   const handleSearchTrip = () => {
@@ -11,7 +12,7 @@ function DriverHomeScreen() {
   };
 
   return (
-    <Container component="main" maxWidth="md">
+    <Container component="main" maxWidth="xs" className="phone-container">
       <div>
         <Typography component="h1" variant="h5" style={{ marginBottom: 20 }}>
           Trang chủ tài xế
