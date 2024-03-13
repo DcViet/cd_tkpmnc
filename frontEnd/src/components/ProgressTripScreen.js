@@ -1,13 +1,9 @@
 import React from 'react';
 import { Container, Typography, Button, Card, CardContent, CardActions } from '@mui/material';
 
-export default function TripDetailsScreen({ trip }) {
-  const handleAcceptTrip = () => {
-    // Xử lý khi nhấn nút "Nhận chuyến đi"
-  };
-
-  const handleViewMap = () => {
-    // Xử lý khi nhấn nút "Xem bản đồ"
+export default function ProgressTripScreen({ trip }) {
+  const handleConfirmPickup = () => {
+    // Xử lý khi nhấn nút "Xác nhận đón khách"
   };
 
   return (
@@ -19,16 +15,13 @@ export default function TripDetailsScreen({ trip }) {
         <Card style={{ marginBottom: 20 }}>
           <CardContent>
             <Typography variant="h6" gutterBottom>
-              Từ: A Đến: B
+              Từ: a Đến: Button
             </Typography>
             {/* Thêm thông tin khách hàng và các thông tin khác của chuyến đi */}
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary" onClick={handleAcceptTrip}>
-              Nhận chuyến
-            </Button>
-            <Button size="small" color="primary" onClick={handleViewMap}>
-              Xem bản đồ
+            <Button size="small" color="primary" onClick={handleConfirmPickup}>
+              Xác nhận đón khách
             </Button>
           </CardActions>
         </Card>

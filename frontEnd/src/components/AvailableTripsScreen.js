@@ -1,18 +1,33 @@
-import React, { useState } from 'react';
-import { Container, Typography, Button, Grid, Card, CardContent, CardActions } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Container, Typography, Button, Card, CardContent, CardActions } from '@mui/material';
 
-function AvailableTripsScreen() {
-  // Giả định danh sách các chuyến đi tài xế có thể nhận
-  const [trips, setTrips] = useState([
-    { id: 1, origin: "A", destination: "B" },
-    { id: 2, origin: "B", destination: "C" },
-    { id: 3, origin: "C", destination: "D" },
-    { id: 4, origin: "D", destination: "E" },
-  ]);
+export default function AvailableTripsScreen() {
+  const [trips, setTrips] = useState([]);
   const [showAllTrips, setShowAllTrips] = useState(false);
 
+  useEffect(() => {
+    // Gửi yêu cầu GET để lấy danh sách chuyến đi từ backend khi component được tải lần đầu tiên
+    axios.get('/api/trips')
+      .then(response => {
+        setTrips(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching trips:', error);
+      });
+  }, []);
+
   const handleAutoAccept = (tripId) => {
-    // Xử lý tự động nhận chuyến đi ở đây
+    // Gửi yêu cầu POST để tự động nhận chuyến đi với id là tripId
+    axios.post(`/api/trips/${tripId}/auto-accept`)
+      .then(response => {
+        console.log(response.data);
+        // Cập nhật trạng thái hoặc hiển thị thông báo thành công
+      })
+      .catch(error => {
+        console.error('Error auto-accepting trip:', error);
+        // Hiển thị thông báo lỗi
+      });
   };
 
   const handleViewMore = () => {
@@ -48,5 +63,3 @@ function AvailableTripsScreen() {
     </Container>
   );
 }
-
-export default AvailableTripsScreen;

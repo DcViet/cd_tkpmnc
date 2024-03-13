@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Typography, Button, Grid } from '@mui/material';
 import '../css/DriverHomeScreen.css'; // Import CSS file for styling
 
-function DriverHomeScreen() {
+export default function DriverHomeScreen() {
   const handleSearchTrip = () => {
     // Xử lý khi nhấn nút "Tìm chuyến đi"
   };
@@ -34,4 +34,3 @@ function DriverHomeScreen() {
   );
 }
 
-export default DriverHomeScreen;

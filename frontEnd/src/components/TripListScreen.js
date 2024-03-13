@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Container, Typography, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
 
-function TripListScreen() {
-  // Giả định danh sách các chuyến đi
-  const trips = [
-    { id: 1, origin: "A", destination: "B" },
-    { id: 2, origin: "B", destination: "C" },
-    { id: 3, origin: "C", destination: "D" },
-  ];
+export default function TripListScreen() {
+  const [trips, setTrips] = useState([]);
+
+  useEffect(() => {
+    // Gửi yêu cầu GET để lấy danh sách chuyến đi từ backend khi component được tải lần đầu tiên
+    axios.get('https://improved-bassoon-76wr4vvvvvxhww6q-4000.app.github.dev/api/sample')
+      .then(response => {
+        console.log(response.data);
+        setTrips(response.data);       
+      })
+      .catch(error => {
+        console.error('Error fetching trips:', error);
+      });
+  }, []);
 
   return (
     <Container component="main" maxWidth="md">
@@ -17,20 +25,23 @@ function TripListScreen() {
           Danh sách chuyến đi
         </Typography>
         <List>
-          {trips.map((trip) => (
-            <ListItem key={trip.id} button>
-              <ListItemText primary={`Từ: ${trip.origin} Đến: ${trip.destination}`} />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="chấp nhận">
-                  <ArrowForward />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
+          <ListItem key={trips.id} button>
+            <ListItemText 
+              primary={`Tên khách hàng: ${trips.customerName}`} 
+              secondary={`Địa điểm lên xe: ${trips.pickupLocation}, Địa điểm xuống xe: ${trips.dropoffLocation}`} 
+            />
+            <ListItemText
+              primary={`Thời gian lên xe: ${new Date(trips.pickupTime).toLocaleString()}`}
+              secondary={`Trạng thái: ${trips.status}`} 
+            />
+            <ListItemSecondaryAction>
+              <IconButton edge="end" aria-label="chấp nhận">
+                <ArrowForward />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
         </List>
       </div>
     </Container>
   );
 }
-
-export default TripListScreen;
