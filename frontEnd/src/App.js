@@ -1,18 +1,20 @@
 // import logo from './logo.svg';
 import './App.css';
-import LoginScreen from './pages/LoginScreen';
-import TripListScreen from './pages/TripListScreen';
+// import LoginScreen from './pages/LoginScreen';
+// import TripListScreen from './pages/TripListScreen';
 // import DriverHomeScreen from './pages/DriverHomeScreen';
 // import AvailableTripsScreen from './pages/AvailableTripsScreen';
 // import TripDetailsScreen from './pages/TripDetailsScreen';
+import Map1 from './pages/destions/Map1';
 
 
 function App() {
   return (
     <div className="App">
-      <LoginScreen />
+      {/* <LoginScreen />
       <TripListScreen />
-      {/* <DriverHomeScreen /> */}
+      <DriverHomeScreen /> */}
+      <Map1 />
       {/* <AvailableTripsScreen /> */}
       {/* <TripDetailsScreen /> */}
     </div>

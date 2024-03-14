@@ -1,8 +1,40 @@
-.phone-container {
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #f0f0f0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+.iphone-container {
+  width: 375px; /* chiều rộng của iPhone 15 */
+  height: 812px; /* chiều cao của iPhone 15 */
+  border-radius: 46px; /* bo góc của iPhone 15 */
+  border: 2px solid black;
+  background-color: #f2f2f2; /* màu nền của iPhone 15 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* đổ bóng cho iPhone 15 */
+  overflow: hidden; /* ẩn bất kỳ nội dung nào ra khỏi phạm vi của container */
+  position: relative; /* thiết lập vị trí tương đối cho việc đặt các phần tử con */
+  /* Căn giữa theo chiều ngang */
+  margin: 0 auto;
   
+  /* Căn giữa theo chiều dọc */
+  display: flex;
+  align-items: center;
+}
+
+.island {
+  width: 140px; /* chiều rộng của phần island */
+  height: 20px; /* chiều cao của phần island */
+  background-color: #333; /* màu của phần island */
+  border-radius: 10px; /* bo góc của phần island */
+  position: absolute;
+  top: 20px; /* khoảng cách từ trên cùng của container đến phần island */
+  left: 50%; /* căn giữa theo chiều ngang */
+  transform: translateX(-50%);
+}
+
+.iphone-container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 60%;
+  height: 100%;
+  border-radius: 28px;
+  background: linear-gradient(to bottom, #bdc3c7, #ecf0f1);
+  transform: translateX(-50%);
+  z-index: -1;
+}

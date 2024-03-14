@@ -12,7 +12,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AppAppBar from '../components/AppAppBar';
 
 function Copyright(props) {
   return (
@@ -27,7 +26,6 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
@@ -44,8 +42,9 @@ export default function LoginScreen() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
+      <div className="iphone-container">
+          <div className="island"></div>
         <CssBaseline />
-        <AppAppBar />
         <Box
           sx={{
             marginTop: 8,
@@ -108,6 +107,7 @@ export default function LoginScreen() {
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
+        </div>
       </Container>
     </ThemeProvider>
   );
