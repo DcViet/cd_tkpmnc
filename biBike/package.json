@@ -13,6 +13,7 @@
     "@expo/vector-icons": "^14.0.0",
     "@react-navigation/native": "^6.1.16",
     "@react-navigation/stack": "^6.3.28",
+    "aws-amplify": "^6.0.20",
     "expo": "~50.0.13",
     "expo-camera": "~14.1.1",
     "expo-contacts": "~12.8.2",
@@ -23,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-native": "0.73.5",
     "react-native-gesture-handler": "^2.15.0",
+    "react-native-maps": "^1.11.3",
     "react-native-reanimated": "^3.8.0",
     "react-native-ui-lib": "^7.18.0",
     "react-native-web": "~0.19.6"
