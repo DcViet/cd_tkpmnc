@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 const CarTypeModal = ({ visible, carTypes, onCarTypeSelect, onClose }) => {
+  const [selectedCarType, setSelectedCarType] = useState(null);
+
+  const handleCarTypeSelect = (carTypeName) => {
+    setSelectedCarType(carTypeName);
+    onCarTypeSelect(carTypeName); // Chuyển loại xe đã chọn ra ngoài để sử dụng trong modal confirm
+  };
+
   return (
     <Modal
       visible={visible}
@@ -15,7 +22,7 @@ const CarTypeModal = ({ visible, carTypes, onCarTypeSelect, onClose }) => {
             <TouchableOpacity
               key={carType.id}
               style={styles.carTypeItem}
-              onPress={() => onCarTypeSelect(carType)}
+              onPress={() => handleCarTypeSelect(carType.name)} // Sử dụng hàm handleCarTypeSelect để xử lý sự kiện chọn loại xe
             >
               <Text style={styles.carTypeName}>{carType.name}</Text>
             </TouchableOpacity>
@@ -68,8 +75,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-
-
 
 export default CarTypeModal;

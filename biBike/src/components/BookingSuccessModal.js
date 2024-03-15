@@ -1,62 +1,31 @@
-import React from 'react';
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+// BookingSuccessModal.js
+import React, { Component } from 'react';
+import { Modal, TouchableOpacity, Text, View } from 'react-native';
 
-const BookingSuccessModal = ({ visible, tripInfo, onClose }) => {
-  return (
-    <Modal
-      visible={visible}
-      transparent={true}
-      animationType="fade"
-    >
-      <View style={styles.overlay}>
-        <View style={styles.modal}>
-          <Text style={styles.title}>Đặt Xe Thành Công!</Text>
-          <Text style={styles.info}>Thông tin chuyến đi:</Text>
-          <Text style={styles.info}>Điểm Xuất Phát: {tripInfo.startLocation}</Text>
-          <Text style={styles.info}>Điểm Đích: {tripInfo.endLocation}</Text>
-          <Text style={styles.info}>Loại Xe: {tripInfo.carType}</Text>
-          <Text style={styles.info}>Giá Cả: {tripInfo.price}</Text>
-          <TouchableOpacity style={styles.okButton} onPress={onClose}>
-            <Text style={styles.buttonText}>OK</Text>
-          </TouchableOpacity>
+export default class BookingSuccessModal extends Component {
+  render() {
+    const { visible, tripInfo, onClose } = this.props;
+
+    return (
+      <Modal
+        visible={visible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={onClose}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+          <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10 }}>
+            {/* Hiển thị thông tin chuyến đi */}
+            <Text>Start Location: {tripInfo.startLocation}</Text>
+            <Text>End Location: {tripInfo.endLocation}</Text>
+            <Text>Car Type: {tripInfo.carType}</Text>
+            <Text>Price: {tripInfo.price}</Text>
+
+            <TouchableOpacity onPress={onClose}>
+              <Text>Close</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </Modal>
-  );
-};
-
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modal: {
-    backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 10,
-    width: '80%',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  info: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  okButton: {
-    backgroundColor: 'green',
-    padding: 10,
-    borderRadius: 5,
-    alignSelf: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-});
-
-export default BookingSuccessModal;
+      </Modal>
+    );
+  }
+}
