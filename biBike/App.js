@@ -15,11 +15,8 @@ const App = () => {
         </View>
       </View>
 
-      <View style={styles.uberTypesContainer}>
-        <UberTypes />
-      </View>
-
       <View style={styles.rideOptionsCardContainer}>
+        <UberTypes />
         <RideOptionsCard />
       </View>
     </View>
@@ -32,33 +29,21 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     flex: 1,
-    width: '100%',
-    position: 'relative',
   },
   searchContainer: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    width: '100%',
     backgroundColor: 'white',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    padding: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     elevation: 2,
-    position: 'absolute',
-    bottom: 0,
-  },
-  uberTypesContainer: {
-    position: 'absolute',
-    bottom: 70,
-    left: 20,
-    right: 20,
-    zIndex: 1000,
   },
   rideOptionsCardContainer: {
-    position: 'absolute',
-    bottom: 20,
-    left: 20,
-    right: 20,
-    zIndex: 1000,
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 10,
+    marginHorizontal: 10,
+    marginBottom: 10,
+    elevation: 2,
   },
 });
 
