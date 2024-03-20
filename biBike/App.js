@@ -1,50 +1,25 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import HomeMap from './src/components/HomeMap';
-import HomeSearch from './src/components/HomeSearch';
-import UberTypes from './src/components/UberTypes';
-import RideOptionsCard from './src/components/RideOptionsCard';
+// App.js
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const App = () => {
+import PaymentScreen from './PaymentScreen';
+import CardPaymentScreen from './CardPaymentScreen';
+import ReviewScreen from './ReviewScreen';
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
   return (
-    <View style={styles.container}>
-      <View style={styles.mapContainer}>
-        <HomeMap />
-        <View style={styles.searchContainer}>
-          <HomeSearch />
-        </View>
-      </View>
-
-      <View style={styles.rideOptionsCardContainer}>
-        <UberTypes />
-        <RideOptionsCard />
-      </View>
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="1-Home" component={HomeScreen} />
+	    <Tab.Screen name="2-Booking" component={BookingScreen} />
+	    <Tab.Screen name="3-Progress" component={ProgressScreen} />
+        <Tab.Screen name="4-Complete" component={CompleteScreen} />
+        <Tab.Screen name="5-Payment" component={PaymentScreen} />
+        <Tab.Screen name="6-Review" component={ReviewScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  mapContainer: {
-    flex: 1,
-  },
-  searchContainer: {
-    backgroundColor: 'white',
-    padding: 10,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    elevation: 2,
-  },
-  rideOptionsCardContainer: {
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 10,
-    marginHorizontal: 10,
-    marginBottom: 10,
-    elevation: 2,
-  },
-});
-
-export default App;
+}
