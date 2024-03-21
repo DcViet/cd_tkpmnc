@@ -1,7 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, TextInput, TouchableOpacity, Text, ScrollView } from 'react-native';
 
 const HomeSearch = () => {
+
+  const locationHome = [
+    { type: 'Home', latitude: '10.764734', longitude: '106.742971' },
+    { type: 'Work', latitude: '10.774734', longitude: '106.752971' },
+    { type: 'Pin', latitude: '10.784734', longitude: '106.762971' },
+  ];
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -11,6 +18,18 @@ const HomeSearch = () => {
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Search</Text>
       </TouchableOpacity>
+
+      <ScrollView>
+        {locationHome.map((locationHome, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => onSelect(locationHome.type)}
+          >
+            <Text>{locationHome.type}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
     </View>
   );
 };

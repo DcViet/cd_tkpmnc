@@ -2,26 +2,20 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import HomeMap from '../components/HomeMap';
-import HomeSearch from '../components/HomeSearch';
+import TripDetailScreen from '../components/TripDetailScreen';
 
-
-import HomeBookNow from '../components/HomeBookNow';
-import HomeBookLate from '../components/HomeBookLate';
-
-const HomeScreen = () => {
+const ProgressScreen = () => {
   return (
     <View style={styles.container}>
       
       <View style={styles.mapContainer}>
         <HomeMap />
-        <View style={styles.searchContainer}>
-          <HomeSearch />
-        </View>
       </View>
 
-      <View style={styles.BookContainer}>
-        <HomeBookNow />      
-        <HomeBookLate />     
+      <View style={styles.bookingDetailsContainer}>
+        {/* <BookingDetails /> */}
+        <TripDetailScreen />
+             
       </View>
 
     </View>
@@ -42,10 +36,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     elevation: 2,
   },
-  BookContainer: {
+  bookingDetailsContainer: {
     backgroundColor: 'white',
-    
   },
 });
 
-export default HomeScreen;
+export default ProgressScreen;
