@@ -1,53 +1,51 @@
-// BookingScreen.js
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'; // Importing TouchableOpacity and Text for the button
 
-import React, { Component } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import HomeMap from '../components/HomeMap';
+import UberTypes from '../components/UberTypes';
 
-export default class BookingScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-    };
-  }
+const BookingScreen = () => { 
+  return (
+    <View style={styles.container}>
 
-  handleUsernameChange = (username) => {
-    this.setState({ username });
-  };
-
-  handlePasswordChange = (password) => {
-    this.setState({ password });
-  };
-
-  handleLogin = () => {
-    // Logic for handling login
-    console.log('Login button pressed');
-  };
-
-  handleSignUp = () => {
-    // Logic for handling sign up
-    console.log('Sign Up button pressed');
-  };
-
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Welcome</Text>
-        <TextInput
-          placeholder="Username"
-          value={this.state.username}
-          onChangeText={this.handleUsernameChange}
-        />
-        <TextInput
-          placeholder="Password"
-          secureTextEntry
-          value={this.state.password}
-          onChangeText={this.handlePasswordChange}
-        />
-        <Button title="Login" onPress={this.handleLogin} />
-        <Button title="Sign Up" onPress={this.handleSignUp} />
+      <View style={styles.mapContainer}>
+        <HomeMap />
       </View>
-    );
-  }
-}
+
+      <View style={styles.bookContainer}>
+        <UberTypes />
+      </View>
+
+      <TouchableOpacity style={styles.bookButton}>
+        <Text style={styles.buttonText}>Book</Text>
+      </TouchableOpacity>
+      
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  mapContainer: {
+    flex: 1,
+  },
+  bookContainer: {
+    flex: 1, // Adjusted to make the UberTypes component fill the available space
+    backgroundColor: 'white',
+  },
+  bookButton: {
+    backgroundColor: 'blue', // Example color for the button background
+    padding: 10, // Added padding to the button for better touchability
+    alignItems: 'center', // Center the content horizontally
+    borderRadius: 5, // Rounded corners for the button
+    margin: 10, // Added margin for better spacing
+  },
+  buttonText: {
+    color: 'white', // Example color for the button text
+    fontSize: 16, // Example font size for the button text
+  },
+});
+
+export default BookingScreen; // Changed the export name to BookingScreen

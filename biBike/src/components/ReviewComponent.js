@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-const ReviewScreen = () => {
+const ReviewComponent = () => {
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -35,6 +35,7 @@ const ReviewScreen = () => {
               <Button key={value} title={value.toString()} onPress={() => handleRatingChange(value)} />
             ))}
           </View>
+          <Button title="Submit" onPress={handleSubmit} />
           <TextInput
             style={styles.feedbackInput}
             placeholder="Enter your feedback here..."
@@ -42,7 +43,7 @@ const ReviewScreen = () => {
             numberOfLines={4}
             onChangeText={handleFeedbackChange}
           />
-          <Button title="Submit" onPress={handleSubmit} />
+          
         </>
       )}
     </View>
@@ -80,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ReviewScreen;
+export default ReviewComponent;

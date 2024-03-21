@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import ReviewScreen from '../components/ReviewScreen';
+import ReviewComponent from '../components/ReviewComponent';
 
-const ReviewS = () => {
+const ReviewScreen = () => {
   return (
     <View style={styles.container}>
-        <ReviewScreen />
+        <ReviewComponent />
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ReviewS;
+export default ReviewScreen;
