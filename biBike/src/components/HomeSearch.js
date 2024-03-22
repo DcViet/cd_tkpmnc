@@ -9,46 +9,54 @@ const HomeSearch = () => {
     { type: 'Pin', latitude: '10.784734', longitude: '106.762971' },
   ];
 
+  const onSelectLocation = (type) => {
+    // Xử lý logic chọn vị trí ở đây
+    console.log("Loại vị trí đã chọn: ", type);
+  };
+
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Search for a destination"
-      />
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Search</Text>
-      </TouchableOpacity>
-
-      <ScrollView>
-        {locationHome.map((locationHome, index) => (
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Search for a destination"
+        />
+        <TouchableOpacity style={styles.button} onPress={() => console.log("Search button pressed")}>
+          <Text style={styles.buttonText}>Search</Text>
+        </TouchableOpacity>
+      </View>
+      <ScrollView style={styles.locationList} showsVerticalScrollIndicator={false}>
+        {locationHome.map((location, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => onSelect(locationHome.type)}
+            onPress={() => onSelectLocation(location.type)}
+            style={styles.locationButton}
           >
-            <Text>{locationHome.type}</Text>
+            <Text style={styles.locationButtonText}>{location.type}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
-
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 20,
     elevation: 5,
   },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   input: {
     flex: 1,
     marginRight: 10,
-    padding: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
     borderRadius: 10,
     backgroundColor: '#f0f0f0',
   },
@@ -60,6 +68,21 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
+    fontWeight: 'bold',
+  },
+  locationList: {
+    maxHeight: 100,
+    marginTop: 10,
+  },
+  locationButton: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginBottom: 5,
+  },
+  locationButtonText: {
+    color: 'black',
     fontWeight: 'bold',
   },
 });

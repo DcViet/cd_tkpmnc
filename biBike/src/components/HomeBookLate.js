@@ -71,6 +71,8 @@ const styles = StyleSheet.create({
     confirmButtonText: {
         fontSize: 18,
         color: 'white',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
         fontWeight: 'bold',
     },
     modalContainer: {
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     modalConfirmButton: {
         backgroundColor: 'blue',
         borderRadius: 5,
-        paddingVertical: 10,
+        paddingVertical: 20,
         alignItems: 'center',
         marginTop: 20,
     },

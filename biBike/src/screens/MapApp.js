@@ -2,28 +2,21 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import HomeMap from '../components/HomeMap';
-import TripDetailScreen from '../components/TripDetailScreen';
 
-const CompleteScreen = () => {
+const MapApp = ({}) => {
   return (
-   
+    
     <View style={styles.container}>
-      
+    
       <View style={styles.mapContainer}>
         <HomeMap />
       </View>
 
-      <View style={styles.bookingDetailsContainer}>
-        {/* <BookingDetails />*/}
-        <TripDetailScreen />
-             
-      </View>
 
     </View>
     
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -39,9 +32,10 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     elevation: 2,
   },
-  bookingDetailsContainer: {
+  BookContainer: {
     backgroundColor: 'white',
+
   },
 });
 
-export default CompleteScreen;
+export default MapApp;

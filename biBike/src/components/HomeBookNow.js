@@ -71,6 +71,8 @@ const styles = StyleSheet.create({
     confirmButtonText: {
         fontSize: 18,
         color: 'white',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
         fontWeight: 'bold',
     },
     modalContainer: {

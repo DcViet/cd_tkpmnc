@@ -1,27 +1,43 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import store from './store';
 import HomeScreen from './src/screens/HomeScreen';
-import BookingScreen from './src/screens/BookingScreen';
-import ProgressScreen from './src/screens/ProgressScreen';
 import CompleteScreen from './src/screens/CompleteScreen';
-import PaymentScreen from './src/screens/PaymentScreen';
-import ReviewScreen from './src/screens/ReviewScreen';
-
-const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const Drawer = createDrawerNavigator();
+  
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="1-Home" component={HomeScreen} />
-        <Tab.Screen name="2-Booking" component={BookingScreen} />
-        <Tab.Screen name="3-Progress" component={ProgressScreen} />
-        <Tab.Screen name="4-Complete" component={CompleteScreen} />
-        <Tab.Screen name="5-Payment" component={PaymentScreen} />
-        <Tab.Screen name="6-Review" component={ReviewScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <Drawer.Navigator>
+              <Drawer.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                  drawerLabel: 'Home',
+                  title: 'Overview',
+                }}
+              />
+              <Drawer.Screen
+                name="User"
+                component={CompleteScreen}
+                options={{
+                  drawerLabel: 'User',
+                  title: 'Overview',
+                }}
+              />
+            </Drawer.Navigator>
+          </GestureHandlerRootView>
+        </SafeAreaProvider>
+      </NavigationContainer>
+    </Provider>
   );
 }

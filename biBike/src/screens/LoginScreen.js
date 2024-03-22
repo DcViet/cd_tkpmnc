@@ -1,5 +1,3 @@
-// LoginScreen.js
-
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
 

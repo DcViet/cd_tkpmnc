@@ -7,7 +7,6 @@ const HomeMap = () => {
 
   return (
     <View style={styles.container}>
-      <Text>This is the HomeMap component</Text>
       <MapView
         style={styles.map}
         initialRegion={{
