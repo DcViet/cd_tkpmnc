@@ -7,6 +7,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import store from './store';
 import HomeScreen from './src/screens/HomeScreen';
+import BookingScreen from './src/screens/BookingScreen';
 import CompleteScreen from './src/screens/CompleteScreen';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <SafeAreaProvider>
           <GestureHandlerRootView style={{ flex: 1 }}>
             <Drawer.Navigator>
+
               <Drawer.Screen
                 name="Home"
                 component={HomeScreen}
@@ -26,12 +28,22 @@ export default function App() {
                   title: 'Overview',
                 }}
               />
+
+              <Drawer.Screen
+                name="User1"
+                component={BookingScreen}
+                options={{
+                  drawerLabel: 'Booking',
+                  title: 'BookingScreen',
+                }}
+              />
+
               <Drawer.Screen
                 name="User"
                 component={CompleteScreen}
                 options={{
-                  drawerLabel: 'User',
-                  title: 'Overview',
+                  drawerLabel: 'Complete',
+                  title: 'CompleteScreen',
                 }}
               />
             </Drawer.Navigator>
