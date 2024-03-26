@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Modal, TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons'; // import icon từ thư viện
 
 const ReviewComponent = () => {
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleRatingChange = (value) => {
     setRating(value);
@@ -20,32 +22,41 @@ const ReviewComponent = () => {
     console.log('Feedback:', feedback);
     // Sau khi gửi, bạn có thể xử lý việc chuyển hướng hoặc hiển thị thông báo thành công
     setSubmitted(true);
+    // Sau khi gửi, đóng modal
+    setModalVisible(false);
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Rate Your Trip</Text>
-      {submitted ? (
-        <Text style={styles.submittedText}>Thank you for your feedback!</Text>
-      ) : (
-        <>
-          <View style={styles.ratingContainer}>
+      <Button title="Open Feedback Form" onPress={() => setModalVisible(true)} />
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeButton}>
+              <AntDesign name="close" size={24} color="black" />
+            </TouchableOpacity>
             <Text>Please rate your trip:</Text>
             {[1, 2, 3, 4, 5].map((value) => (
               <Button key={value} title={value.toString()} onPress={() => handleRatingChange(value)} />
             ))}
+            <TextInput
+              style={styles.feedbackInput}
+              placeholder="Enter your feedback here..."
+              multiline
+              numberOfLines={4}
+              onChangeText={handleFeedbackChange}
+            />
+            <Button title="Submit" onPress={handleSubmit} />
           </View>
-          <Button title="Submit" onPress={handleSubmit} />
-          <TextInput
-            style={styles.feedbackInput}
-            placeholder="Enter your feedback here..."
-            multiline
-            numberOfLines={4}
-            onChangeText={handleFeedbackChange}
-          />
-          
-        </>
-      )}
+        </View>
+      </Modal>
+      {submitted && <Text style={styles.submittedText}>Thank you for your feedback!</Text>}
     </View>
   );
 };
@@ -61,10 +72,17 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
   },
-  ratingContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    width: '80%',
   },
   feedbackInput: {
     borderWidth: 1,
@@ -72,12 +90,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 20,
-    width: '100%',
-    height: 100,
   },
   submittedText: {
     fontSize: 18,
     textAlign: 'center',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
   },
 });
 

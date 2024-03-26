@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 
 import ReviewComponent from '../components/ReviewComponent';
 
-const ReviewScreen = () => {
+const ReviewScreen = ( { navigation }) => {
   return (
     <View style={styles.container}>
         <ReviewComponent />

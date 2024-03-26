@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Modal } from 'react-native'; // Import Modal
 import { CheckBox } from '@rneui/themed'; // Import CheckBox component
 
 const UberTypes = ({ onSelect }) => {
-  const [selectedType, setSelectedType] = useState(null); // Step 1: Trạng thái để lưu trữ loại Uber được chọn
+  const [selectedType, setSelectedType] = useState(null); // State to store the selected Uber type
+  const [modalVisible, setModalVisible] = useState(false); // State to control the visibility of the modal
 
   const uberTypes = [
     { type: 'UberX', price: '$10-15', time: '5 min' },
@@ -12,8 +13,12 @@ const UberTypes = ({ onSelect }) => {
   ];
 
   const handleSelect = (type) => {
-    setSelectedType(type === selectedType ? null : type); // Step 2: Cập nhật trạng thái khi người dùng chọn loại Uber
-    onSelect(type);
+    setSelectedType(type === selectedType ? null : type);
+    // onSelect(type);
+  };
+
+  const handleConfirmation = () => {
+    setModalVisible(true); // Show the modal when the confirmation button is pressed
   };
 
   return (
@@ -21,33 +26,58 @@ const UberTypes = ({ onSelect }) => {
       <Text style={styles.title}>Choose a ride</Text>
       <ScrollView>
         {uberTypes.map((uberType, index) => (
-          <TouchableOpacity 
-            key={index} 
-            style={styles.uberType} 
-            onPress={() => handleSelect(uberType.type)} // Thay đổi hàm gọi khi người dùng chọn
+          <TouchableOpacity
+            key={index}
+            style={styles.uberType}
+            onPress={() => handleSelect(uberType.type)}
           >
             <View style={styles.row}>
-              <Text style={styles.uberTypeName}>{uberType.type}</Text>
-              <CheckBox 
-                checked={selectedType === uberType.type} // Kiểm tra xem loại Uber có được chọn không
-                onChange={() => handleSelect(uberType.type)} // Thay đổi trạng thái khi người dùng chọn checkbox
+              <CheckBox
+                checked={selectedType === uberType.type}
+                onChange={() => handleSelect(uberType.type)}
               />
+              <Text style={styles.uberTypeName}>{uberType.type}</Text>
             </View>
             <Text style={styles.uberTypeDetails}>{uberType.price} • {uberType.time}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
+      {selectedType && (
+        <TouchableOpacity onPress={handleConfirmation} style={styles.confirmationButton}>
+          <Text style={styles.confirmationButtonText}>Confirm</Text>
+        </TouchableOpacity>
+      )}
+      {/* Modal for confirmation */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(false);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>You have selected:</Text>
+            <Text style={styles.selectedType}>{selectedType}</Text>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    borderRadius: 10,
+    flex: 1,
+    backgroundColor: '#fff',
     padding: 20,
-    elevation: 5,
-    maxHeight: 200, // Chiều cao tối đa của box
   },
   title: {
     fontSize: 20,
@@ -55,22 +85,74 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   uberType: {
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   uberTypeName: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginRight: 5,
+    marginLeft: 10,
   },
   uberTypeDetails: {
     fontSize: 14,
     color: '#666',
   },
-  row: {
-    flexDirection: 'row',
+  confirmationButton: {
+    backgroundColor: '#007AFF',
+    paddingVertical: 10,
+    borderRadius: 5,
     alignItems: 'center',
+  },
+  confirmationButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 18,
+  },
+  selectedType: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  closeButton: {
+    backgroundColor: '#007AFF',
+    borderRadius: 5,
+    padding: 10,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 

@@ -6,7 +6,7 @@ import HomeSearch from '../components/HomeSearch';
 import HomeBookNow from '../components/HomeBookNow';
 import HomeBookLate from '../components/HomeBookLate';
 
-const HomeScreen = ({ }) => {
+const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.mapContainer}>
@@ -17,6 +17,7 @@ const HomeScreen = ({ }) => {
       </View>
 
       <View style={styles.bookContainer}>
+        <HomeBookNow />
         <HomeBookNow />
         <HomeBookLate />
       </View>

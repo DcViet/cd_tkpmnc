@@ -2,7 +2,8 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'; // Importing TouchableOpacity and Text for the button
 
 import HomeMap from '../components/HomeMap';
-import UberTypes from '../components/UberTypes';
+// import UberTypes from '../components/UberTypes';
+import CarType from '../components/CarType';
 
 const BookingScreen = () => { 
   return (
@@ -13,7 +14,8 @@ const BookingScreen = () => {
       </View>
 
       <View style={styles.bookContainer}>
-        <UberTypes />
+        {/* <UberTypes /> */}
+        <CarType />
       </View>
 
       <TouchableOpacity style={styles.bookButton}>
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   bookButton: {
-    backgroundColor: 'blue', // Example color for the button background
+    backgroundColor: '#007AFF', // Example color for the button background
     padding: 10, // Added padding to the button for better touchability
     alignItems: 'center', // Center the content horizontally
     borderRadius: 5, // Rounded corners for the button
