@@ -25,6 +25,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "googleMapsApiKey": "AIzaSyC4d9HJz5nBz1ZXochyb-J3vwLopdw_9H8"
     }
   }
 }

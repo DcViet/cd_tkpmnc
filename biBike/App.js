@@ -8,12 +8,14 @@ import { Ionicons } from '@expo/vector-icons';
 
 import store from './store';
 import HomeScreen from './src/screens/HomeScreen';
+import Search from './src/screens/Search';
 import BookingScreen from './src/screens/BookingScreen';
 import ProgressScreen from './src/screens/ProgressScreen';
 import CompleteScreen from './src/screens/CompleteScreen';
 import ReviewScreen from './src/screens/ReviewScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import PaymentScreen from './src/screens/PaymentScreen';
+import SearchResult from './src/components/SearchResult';
 
 export default function App() {
   const Drawer = createDrawerNavigator();
@@ -74,6 +76,24 @@ export default function App() {
                   title: 'Overview',
                 }}
               />
+
+              <Drawer.Screen
+                name="Search"
+                component={Search}
+                options={{
+                  drawerLabel: 'Search',
+                  title: 'Overview',
+                }}
+              />
+              <Drawer.Screen
+                name="SearchResult"
+                component={SearchResult}
+                options={{
+                  drawerLabel: 'SearchResult',
+                  title: 'Overview',
+                }}
+              />
+              
               <Drawer.Screen
                 name="Booking"
                 component={BookingScreen}

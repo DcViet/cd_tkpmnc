@@ -2,9 +2,8 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
-import HomeMap from '../components/HomeMap';
+// import HomeMap from '../components/HomeMap';
 import TripDetailScreen from '../components/TripDetailScreen';
-import ReviewScreen from './ReviewScreen';
 
 const CompleteScreen = () => {
   const navigation = useNavigation(); 
@@ -19,12 +18,11 @@ const CompleteScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.mapContainer}>
+      {/* <View style={styles.mapContainer}>
         <HomeMap />
-      </View>
+      </View> */}
 
-      <View style={styles.bookingDetailsContainer}>
-        {/* <BookingDetails />*/}
+      <View style={styles.tripDetailsContainer}>
         <TripDetailScreen />
       </View>
 
@@ -49,7 +47,7 @@ const styles = StyleSheet.create({
   mapContainer: {
     flex: 1,
   },
-  bookingDetailsContainer: {
+  tripDetailsContainer: {
     backgroundColor: 'white',
     flex: 1,
   },

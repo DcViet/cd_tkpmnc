@@ -1,25 +1,20 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import HomeMap from '../components/HomeMap';
-import HomeSearch from '../components/HomeSearch';
-import HomeBookNow from '../components/HomeBookNow';
-import HomeBookLate from '../components/HomeBookLate';
+
+import Map from '../components/Map';
+import MapSearch from '../components/MapSearch';
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.mapContainer}>
-        <HomeMap />
-        <View style={styles.searchContainer}>
-          <HomeSearch />
-        </View>
+        <Map />
       </View>
 
       <View style={styles.bookContainer}>
-        <HomeBookNow />
-        <HomeBookNow />
-        <HomeBookLate />
+
+<MapSearch />
       </View>
     </View>
   );

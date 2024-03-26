@@ -1,7 +1,21 @@
-import React from 'react';
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 
-class CarType extends React.Component {
+class CarType extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedCarInfo: null, // Thông tin của box được chọn
+            modalVisible: false, // Đánh dấu xem modal có hiển thị hay không
+            selectedBox: null // Trạng thái được chọn của box
+        };
+    }
+
+    handleBoxPress = (carInfo, index) => {
+        // Xử lý sự kiện chọn box và lưu thông tin vào state
+        this.setState({ selectedCarInfo: carInfo, modalVisible: true, selectedBox: index });
+    };
+
     renderCarousel = (type) => {
         let carInfoData = [];
 
@@ -25,6 +39,8 @@ class CarType extends React.Component {
             ];
         }
 
+        const { selectedBox } = this.state;
+
         return (
             <View style={styles.carouselContainer} key={type}>
                 <View style={styles.container}>
@@ -32,12 +48,15 @@ class CarType extends React.Component {
                     <View style={styles.view2}>
                         <View style={styles.flexContainer}>
                             {carInfoData.map((item, index) => (
-                                <View style={styles.infoBox} key={index}>
+                                <TouchableOpacity
+                                    key={index}
+                                    style={[styles.infoBox, selectedBox === index && styles.selectedBox]} // Thêm kiểu dáng cho box được chọn
+                                    onPress={() => this.handleBoxPress(item, index)}>
                                     <Text style={styles.infoText}>{item.title}</Text>
                                     {item.content.map((contentItem, contentIndex) => (
                                         <Text key={contentIndex}>{contentItem}</Text>
                                     ))}
-                                </View>
+                                </TouchableOpacity>
                             ))}
                         </View>
                     </View>
@@ -56,9 +75,42 @@ class CarType extends React.Component {
                     </View>
                 </View>
             </View>
-
         );
     };
+
+    renderModal = () => {
+        const { selectedCarInfo, modalVisible } = this.state;
+
+        if (!modalVisible || !selectedCarInfo) {
+            // Return null if modal is not visible or selectedCarInfo is null
+            return null;
+        }
+
+        return (
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    this.setState({ modalVisible: false });
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.modalText}>You have selected:</Text>
+                        <Text style={styles.selectedType}>{selectedCarInfo.title}</Text>
+                        <TouchableOpacity
+                            style={styles.closeButton}
+                            onPress={() => this.setState({ modalVisible: false })}
+                        >
+                            <Text style={styles.closeButtonText}>Close</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
+        );
+    };
+
 
     render() {
         const carTypes = ["Type1", "Type2", "Type3"];
@@ -68,6 +120,7 @@ class CarType extends React.Component {
                 {carTypes.map((type, index) => (
                     this.renderCarousel(type)
                 ))}
+                {this.renderModal()}
             </ScrollView>
         );
     }
@@ -126,6 +179,54 @@ const styles = StyleSheet.create({
     infoText: {
         fontWeight: 'bold',
     },
+
+
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+    },
+    selectedType: {
+        marginBottom: 15,
+        textAlign: "center",
+        fontWeight: "bold"
+    },
+    closeButton: {
+        backgroundColor: "#2196F3",
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    closeButtonText: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    selectedBox: {
+        backgroundColor: 'rgba(0, 0, 255, 0.5)', // Màu nền khi box được chọn
+    }
 });
 
 export default CarType;
+
+

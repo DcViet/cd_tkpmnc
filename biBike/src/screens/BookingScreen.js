@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'; // Importing TouchableOpacity and Text for the button
 
 import HomeMap from '../components/HomeMap';
-// import UberTypes from '../components/UberTypes';
 import CarType from '../components/CarType';
 
 const BookingScreen = () => { 
@@ -14,7 +13,6 @@ const BookingScreen = () => {
       </View>
 
       <View style={styles.bookContainer}>
-        {/* <UberTypes /> */}
         <CarType />
       </View>
 
@@ -50,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BookingScreen; // Changed the export name to BookingScreen
+export default BookingScreen; 
