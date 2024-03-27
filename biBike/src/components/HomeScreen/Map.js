@@ -2,19 +2,19 @@ import { View, Text, Image } from 'react-native'
 import React from 'react'
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
-import cars from '../../assets/data/car';
+import cars from '../../../assets/data/car';
 
 const Map = () => {
 
   const getImage = (type) => {
     if (type === 'UberX') {
-      return require('../../assets/images/glc-300.png')
+      return require('../../../assets/images/glc-300.png')
     }
     if (type === 'Comfort') {
-      return require('../../assets/images/glc-300.png')
+      return require('../../../assets/images/glc-300.png')
     }
     if (type === 'UberXL') {
-      return require('../../assets/images/glc-300.png')
+      return require('../../../assets/images/glc-300.png')
     }
   }
   return (
@@ -23,10 +23,10 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
         initialRegion={{
-        latitude: 51.1451,
-        longitude: 0.8740,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitude: 10.7375807,
+        longitude: 106.6870569,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
       }}
     >
       {cars.map((car) => (

@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'; // Importing TouchableOpacity and Text for the button
+import { View, StyleSheet, TouchableOpacity, Text, ScrollView } from 'react-native'; 
 
-import HomeMap from '../components/HomeMap';
+import Map from '../components/HomeScreen/Map';
 import CarType from '../components/CarType';
 
 const BookingScreen = () => { 
@@ -9,7 +9,7 @@ const BookingScreen = () => {
     <View style={styles.container}>
 
       <View style={styles.mapContainer}>
-        <HomeMap />
+        <Map />
       </View>
 
       <View style={styles.bookContainer}>

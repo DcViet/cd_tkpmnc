@@ -1,26 +1,25 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-
-import Map from '../components/Map';
-import MapSearch from '../components/MapSearch';
+import Map from '../components/HomeScreen/Map';
+import MapSearch from '../components/HomeScreen/MapSearch';
 
 const HomeScreen = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.mapContainer}>
+    <View style={HomeStyles.container}>
+      <View style={HomeStyles.mapContainer}>
         <Map />
       </View>
 
-      <View style={styles.bookContainer}>
+      <View style={HomeStyles.bookContainer}>
 
-<MapSearch />
+        <MapSearch />
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const HomeStyles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column', // Default is 'column', so it's optional to include this line

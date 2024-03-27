@@ -7,15 +7,18 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
 import store from './store';
+
 import HomeScreen from './src/screens/HomeScreen';
 import Search from './src/screens/Search';
+
 import BookingScreen from './src/screens/BookingScreen';
 import ProgressScreen from './src/screens/ProgressScreen';
 import CompleteScreen from './src/screens/CompleteScreen';
 import ReviewScreen from './src/screens/ReviewScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import PaymentScreen from './src/screens/PaymentScreen';
-import SearchResult from './src/components/SearchResult';
+
+import SearchResult from './src/components/HomeScreen/SearchResult';
 
 export default function App() {
   const Drawer = createDrawerNavigator();
@@ -24,8 +27,8 @@ export default function App() {
   function CustomDrawerContent(props) {
     return (
       <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
-        {/* Đây là nút chuông thông báo trong Drawer */}
+        <DrawerItemList {...props} />   
+           
         <DrawerItem
           label="Notifications"
           onPress={() => alert('Notification pressed')}

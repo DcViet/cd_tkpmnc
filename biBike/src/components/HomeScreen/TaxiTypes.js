@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import TaxiTypeRow from '../components/TaxiTypeRow' // Assuming this component is correctly imported
-import types from '../../assets/data/types'
+import TaxiTypeRow from './TaxiTypeRow' 
+import types from '../../../assets/data/types'
 import { StyleSheet } from 'react-native'
 
 const TaxiTypes = () => {

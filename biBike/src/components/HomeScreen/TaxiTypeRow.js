@@ -11,13 +11,13 @@ const TaxiTypeRow = (props) => {
 
   const getImageName = () => {
     if (type.type === 'TaxiX') {
-      return require('../../assets/images/glc-300.png')
+      return require('../../../assets/images/glc-300.png')
     }
     if (type.type === 'Taxi+') {
-      return require('../../assets/images/glc-300.png')
+      return require('../../../assets/images/glc-300.png')
     }
     if (type.type === 'TaxiXL') {
-      return require('../../assets/images/glc-300.png')
+      return require('../../../assets/images/glc-300.png')
     }
   }
 

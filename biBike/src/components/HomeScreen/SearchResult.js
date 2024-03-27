@@ -1,8 +1,8 @@
 import { View, Text, Dimensions, ScrollView } from 'react-native'
 import React from 'react'
 import RouteMap from './RouteMap'
-import TaxiTypes from './TaxiTypes'
-
+// import TaxiTypes from './TaxiTypes'
+import CarType from '../CarType'
 import { useRoute } from '@react-navigation/native'
 
 const SearchResult = (props) => {
@@ -23,7 +23,8 @@ const SearchResult = (props) => {
 
           {/* Select a type of taxi to use */}
           <View style={{ height: 400 }}>
-            <TaxiTypes />
+            {/* <TaxiTypes /> */}
+            <CarType />
           </View>
       </View>
     </ScrollView>
