@@ -33,43 +33,43 @@ module.exports = {
       },
       {
         requestId: 3,
-        requestTime: new Date("2024-03-27 17:00:00"), // Thời gian yêu cầu cuốc đi mẫu
-        pickupLocation: "KTX Đại học Quốc gia TP.HCM", // Địa điểm đón khách mẫu
-        dropoffLocation: "Ga Sài Gòn", // Địa điểm trả khách mẫu
-        status: "processing", // Trạng thái yêu cầu (chờ xử lý)
-        completionTime: null, // Chưa hoàn thành cuốc đi (xóa nếu cần)
-        distance: null, // Chưa có thông tin khoảng cách (xóa nếu cần)
-        driverRating: null, // Chưa có đánh giá tài xế (xóa nếu cần)
-        customerId: 3, // Giả sử ID khách hàng này tồn tại (liên kết với bảng Customer)
-        driverId: 3, // Chưa phân công tài xế (xóa nếu cần)
+        requestTime: new Date("2024-03-27 17:00:00"), 
+        pickupLocation: "KTX Đại học Quốc gia TP.HCM", 
+        dropoffLocation: "Ga Sài Gòn", 
+        status: "processing", 
+        completionTime: null, 
+        distance: null, 
+        driverRating: null, 
+        customerId: 3,
+        driverId: 3, 
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         requestId: 4,
-        requestTime: new Date("2024-03-28 10:00:00"), // Thời gian yêu cầu cuốc đi mẫu
-        pickupLocation: "Bến xe Miền Tây", // Địa điểm đón khách mẫu
-        dropoffLocation: "Bến xe Miền Đông", // Địa điểm trả khách mẫu
-        status: "completed", // Trạng thái yêu cầu (đã hoàn thành)
-        completionTime: new Date("2024-03-28 11:00:00"), // Thời gian hoàn thành cuốc đi mẫu
-        distance: 8.5, // Khoảng cách ước tính (thay thế bằng giá trị phù hợp)
-        driverRating: 4, // Đánh giá tài xế (thay thế bằng giá trị 1-5)
-        customerId: 4, // Giả sử ID khách hàng này tồn tại (liên kết với bảng Customer)
-        driverId: 4, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
+        requestTime: new Date("2024-03-28 10:00:00"),
+        pickupLocation: "Bến xe Miền Tây", 
+        dropoffLocation: "Bến xe Miền Đông", 
+        status: "completed", 
+        completionTime: new Date("2024-03-28 11:00:00"),
+        distance: 8.5, 
+        driverRating: 4,
+        customerId: 4, 
+        driverId: 4, 
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         requestId: 5,
-        requestTime: new Date("2024-03-29 14:00:00"), // Thời gian yêu cầu cuốc đi mẫu
-        pickupLocation: "Trung tâm thương mại Vincom Center", // Địa điểm đón khách mẫu
-        dropoffLocation: "Nhà hát Thành phố", // Địa điểm trả khách mẫu
-        status: "processing", // Trạng thái yêu cầu (đã được phân công tài xế)
-        completionTime: null, // Chưa hoàn thành cuốc đi (xóa nếu cần)
-        distance: 3.5, // Khoảng cách ước tính (thay thế bằng giá trị phù hợp)
-        driverRating: null, // Chưa đánh giá tài xế (xóa nếu cần)
-        customerId: 5, // Giả sử ID khách hàng này tồn tại (liên kết với bảng Customer)
-        driverId: 5, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
+        requestTime: new Date("2024-03-29 14:00:00"),
+        pickupLocation: "Trung tâm thương mại Vincom Center", 
+        dropoffLocation: "Nhà hát Thành phố", 
+        status: "processing", 
+        completionTime: null, 
+        distance: 3.5, 
+        driverRating: null,
+        customerId: 5, 
+        driverId: 5, 
         createdAt: new Date(),
         updatedAt: new Date()
       },
