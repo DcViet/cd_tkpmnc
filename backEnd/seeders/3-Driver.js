@@ -47,6 +47,51 @@ module.exports = {
         workStatus: "available",
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        driverId: 6,
+        name: "Trần Văn Nam",
+        phoneNumber: "0917890456",
+        currentLocation: "Tọa độ GPS: 10.7855, 106.6790",
+        workStatus: "available",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        driverId: 7,
+        name: "Lê Thị Mai",
+        phoneNumber: "0917890789",
+        currentLocation: "Tọa độ GPS: 10.7856, 106.6791",
+        workStatus: "off",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        driverId: 8,
+        name: "Phạm Văn Long",
+        phoneNumber: "0917891123",
+        currentLocation: "Tọa độ GPS: 10.7857, 106.6792",
+        workStatus: "available",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        driverId: 9,
+        name: "Vũ Thị Huệ",
+        phoneNumber: "0917891456",
+        currentLocation: "Tọa độ GPS: 10.7858, 106.6793",
+        workStatus: "off",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        driverId: 10,
+        name: "Đặng Văn Bình",
+        phoneNumber: "0917891789",
+        currentLocation: "Tọa độ GPS: 10.7859, 106.6794",
+        workStatus: "available",
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ];
     

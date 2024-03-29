@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       requestTime: DataTypes.DATE,
       pickupLocation: DataTypes.TEXT,
       dropoffLocation: DataTypes.TEXT,
-      status: DataTypes.ENUM('pending', 'assigned', 'in_progress', 'completed'),
+      status: DataTypes.ENUM('pending', 'assigned', 'processing', 'completed'),
       completionTime: DataTypes.DATE,
       distance: DataTypes.FLOAT,
       driverRating: DataTypes.INTEGER

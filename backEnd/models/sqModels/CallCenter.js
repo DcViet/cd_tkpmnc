@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       // Define associations here
       CallCenter.belongsTo(models.Customer, { foreignKey: 'customerId' });
       CallCenter.belongsTo(models.Driver, { foreignKey: 'driverId' });
-      CallCenter.belongsTo(models.RideRequest, { foreignKey: 'rideRequestId' });
+      CallCenter.belongsTo(models.RideRequest, { foreignKey: 'requestId' });
     }
   }
   CallCenter.init(

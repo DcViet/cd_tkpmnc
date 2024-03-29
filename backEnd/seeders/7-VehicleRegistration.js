@@ -29,54 +29,48 @@ module.exports = {
       {
         registrationId: 4,
         licensePlate: "29L - 789012", // Biển số xe giả định
-        driverId: 10, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
+        driverId: 4, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         registrationId: 5,
         licensePlate: "29D - 123457", // Biển số xe giả định
-        driverId: 4, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        licensePlate: "29E - 789012", // Biển số xe giả định
         driverId: 5, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         registrationId: 6,
-        licensePlate: "29F - 345678", // Biển số xe giả định
+        licensePlate: "29E - 123458", // Biển số xe giả định
         driverId: 6, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         registrationId: 7,
-        licensePlate: "29G - 901234", // Biển số xe giả định
+        licensePlate: "29F - 123459", // Biển số xe giả định
         driverId: 7, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         registrationId: 8,
-        licensePlate: "29H - 567890", // Biển số xe giả định
+        licensePlate: "29G - 123460", // Biển số xe giả định
         driverId: 8, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         registrationId: 9,
-        licensePlate: "29K - 123456", // Biển số xe giả định
+        licensePlate: "29H - 123461", // Biển số xe giả định
         driverId: 9, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         registrationId: 10,
-        licensePlate: "29L - 789012", // Biển số xe giả định
+        licensePlate: "29I - 123462", // Biển số xe giả định
         driverId: 10, // Giả sử ID tài xế này tồn tại (liên kết với bảng Driver)
         createdAt: new Date(),
         updatedAt: new Date()

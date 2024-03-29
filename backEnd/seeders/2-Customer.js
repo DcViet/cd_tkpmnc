@@ -105,12 +105,10 @@ module.exports = {
       }
     ];
 
-    // Thêm dữ liệu vào bảng Customers
     await queryInterface.bulkInsert('Customers', customersData, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    // Xóa toàn bộ dữ liệu từ bảng Customers
     await queryInterface.bulkDelete('Customers', null, {});
   }
 };

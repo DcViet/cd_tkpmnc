@@ -5,103 +5,154 @@ module.exports = {
     const accountInfos = [
       {
         accountId: 1,
-        name: "Nguyễn Văn An",
-        phoneNumber: "0901234567",
-        email: "null",
-        homeAddress: "123 đường ABC, Quận 1, TP.HCM",
-        currentLocation: "Tọa độ GPS: 10.7753, 106.7793",
+        customerId: 1,
+        idNumber: 123456789,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
+
       },
       {
         accountId: 2,
-        name: "Trần Thị Mai",
-        phoneNumber: "0987654321",
-        email: "null",
-        homeAddress: "456 đường XYZ, Quận 2, TP.HCM",
-        currentLocation: "Vị trí gần đây: Cửa hàng tiện lợi",
+        customerId: 2,
+        idNumber: 987654321,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       },
       {
         accountId: 3,
-        name: "Lê Minh Hiếu",
-        phoneNumber: "0383828180",
-        email: "null",
-        homeAddress: "789 đường DEF, Quận 3, TP.HCM",
-        currentLocation: "Tại nhà",
+        customerId: 3,
+        idNumber: 234567890,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       },
       {
         accountId: 4,
-        name: "Phạm Thu Hà",
-        phoneNumber: "0707898765",
-        email: "null",
-        homeAddress: "123 đường ABC, Quận 1, TP.HCM",
-        currentLocation: "GPS: 10.7753, 106.7793",
+        customerId: 4,
+        idNumber: 345678901,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       },
       {
         accountId: 5,
-        name: "Đinh Ngọc Minh",
-        phoneNumber: "0932145678",
-        email: "null",
-        homeAddress: "456 đường XYZ, Quận 2, TP.HCM",
-        currentLocation: "Quán cà phê ABC",
+        customerId: 5,
+        idNumber: 456789012,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       },
       {
         accountId: 6,
-        name: "Nguyễn Văn B",
-        phoneNumber: "0912345678",
-        email: "null",
-        homeAddress: "789 đường DEF, Quận 3, TP.HCM",
-        currentLocation: "Tại công ty",
+        customerId: 6,
+        idNumber: 567890123,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       },
       {
         accountId: 7,
-        name: "Trần Thị Lan",
-        phoneNumber: "0987654322",
-        email: "null",
-        homeAddress: "123 đường ABC, Quận 1, TP.HCM",
-        currentLocation: "GPS: 10.7753, 106.7793",
+        customerId: 7,
+        idNumber: 678901234,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       },
       {
         accountId: 8,
-        name: "Lê Minh Quân",
-        phoneNumber: "0383828181",
-        email: "null",
-        homeAddress: "456 đường XYZ, Quận 2, TP.HCM",
-        currentLocation: "Trung tâm thương mại",
+        customerId: 8,
+        idNumber: 789012345,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       },
       {
         accountId: 9,
-        name: "Phạm Thu Hiền",
-        phoneNumber: "0707898766",
-        email: "null",
-        homeAddress: "789 đường DEF, Quận 3, TP.HCM",
-        currentLocation: "Tại nhà",
+        customerId: 9,
+        idNumber: 901234567,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       },
       {
         accountId: 10,
-        name: "Đinh Ngọc Tuấn",
-        phoneNumber: "0932145679",
-        email: "null",
-        homeAddress: "123 đường ABC, Quận 1, TP.HCM",
-        currentLocation: "GPS: 10.7753, 106.7793",
+        customerId: 10,
+        idNumber: 123456789,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        paymentInfo: JSON.stringify({
+          "method": "credit_card",
+          "card": { 
+            "number": "1234 5678 9012 3456", 
+            "expiry": "12/26", 
+            "cvv": "123" 
+          }
+        })
       }
     ];
 
@@ -109,7 +160,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    // Xóa dữ liệu
     await queryInterface.bulkDelete('AccountInfos', null, {});
   }
 };
