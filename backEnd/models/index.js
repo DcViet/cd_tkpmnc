@@ -6,7 +6,7 @@ const env = process.env.NODE_ENV || 'development';
 
 const config = {
   user: "avnadmin",
-  password: "AVNS_-8hfoPmol2ayuSVvefZ",
+  password: "",
   host: "pg-cdtkpm-cdtkpmnc.a.aivencloud.com",
   port: 18615,
   database: "defaultdb",

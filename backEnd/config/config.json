@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "avnadmin",
-    "password": "AVNS_-8hfoPmol2ayuSVvefZ",
+    "password": "",
     "database": "cdtkpmdb",
     "host": "pg-cdtkpm-cdtkpmnc.a.aivencloud.com",
     "dialect": "postgres",
