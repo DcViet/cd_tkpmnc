@@ -6,12 +6,14 @@ const env = process.env.NODE_ENV || 'development';
 
 const config = {
   user: "avnadmin",
-  password: "",
+  password: "AVNS_-8hfoPmol2ayuSVvefZ",
   host: "pg-cdtkpm-cdtkpmnc.a.aivencloud.com",
   port: 18615,
-  database: "defaultdb",
+  database: "tkpmncdb",
   dialect: 'postgres',
-  ssl: true 
+  ssl: {
+    rejectUnauthorized: false 
+  } 
 };
 
 const sequelize = new Sequelize(config.database, config.user, config.password, {

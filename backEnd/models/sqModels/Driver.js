@@ -12,16 +12,17 @@ module.exports = (sequelize, DataTypes) => {
       driverId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        
       },
       name: DataTypes.STRING,
       phoneNumber: DataTypes.STRING,
-      currentLocation: DataTypes.GEOGRAPHY,
+      currentLocation: DataTypes.TEXT,
       workStatus: DataTypes.ENUM('available', 'working', 'off')
     },
     {
       sequelize,
       modelName: 'Driver',
+      timestamps: true
     }
   );
   return Driver;

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       registrationId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        
       },
       licensePlate: {
         type: DataTypes.STRING,
@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'VehicleRegistration',
+      timestamps: true
     }
   );
   return VehicleRegistration;

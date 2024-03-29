@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       accountId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        
       },
       customerId: DataTypes.INTEGER,
       idNumber: DataTypes.STRING, // Số căn cước
@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'AccountInfo',
+      timestamps: true
     }
   );
   return AccountInfo;

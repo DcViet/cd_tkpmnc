@@ -70,7 +70,7 @@ const HomeMap = () => {
             });
           }}
           query={{
-            key: 'AIzaSyC4d9HJz5nBz1ZXochyb-J3vwLopdw_9H8', // Thay YOUR_API_KEY bằng khóa API của bạn
+            key: 'AIzaSyC4d9HJz5nBz1ZXochyb-J3vwLopdw_9H', // Thay YOUR_API_KEY bằng khóa API của bạn
             language: 'en',
           }}
           fetchDetails={true}

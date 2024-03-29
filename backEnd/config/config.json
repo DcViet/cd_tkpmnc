@@ -1,11 +1,11 @@
 {
   "development": {
     "username": "avnadmin",
-    "password": "",
-    "database": "cdtkpmdb",
+    "password": "AVNS_-8hfoPmol2ayuSVvefZ",
+    "database": "tkpmncdb",
     "host": "pg-cdtkpm-cdtkpmnc.a.aivencloud.com",
     "dialect": "postgres",
-    "port": 18615,
+    "port": "18615",
     "SSLMode": "require",
     "dialectOptions": {
       "ssl": {

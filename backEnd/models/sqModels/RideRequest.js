@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       requestId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        
       },
       requestTime: DataTypes.DATE,
-      pickupLocation: DataTypes.GEOGRAPHY,
-      dropoffLocation: DataTypes.GEOGRAPHY,
+      pickupLocation: DataTypes.TEXT,
+      dropoffLocation: DataTypes.TEXT,
       status: DataTypes.ENUM('pending', 'assigned', 'in_progress', 'completed'),
       completionTime: DataTypes.DATE,
       distance: DataTypes.FLOAT,
@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'RideRequest',
+      timestamps: true
     }
   );
   return RideRequest;

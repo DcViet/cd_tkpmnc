@@ -14,17 +14,18 @@ module.exports = (sequelize, DataTypes) => {
       customerId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        
       },
       name: DataTypes.STRING,
       phoneNumber: DataTypes.STRING,
       email: DataTypes.STRING,
       homeAddress: DataTypes.STRING,
-      currentLocation: DataTypes.GEOGRAPHY
+      currentLocation: DataTypes.TEXT
     },
     {
       sequelize,
       modelName: 'Customer',
+      timestamps: true
     }
   );
   return Customer;

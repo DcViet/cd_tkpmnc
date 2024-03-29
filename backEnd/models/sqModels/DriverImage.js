@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       imageId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        
       },
       imageUrl: DataTypes.STRING,
       isAvatar: {
@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'DriverImage',
+      timestamps: true
     }
   );
   return DriverImage;

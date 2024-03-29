@@ -16,7 +16,7 @@ const RouteMap = ({ origin, destination }) => {
         longitude: destination.details.geometry.location.lng
     }
 
-    const api_key = 'AIzaSyC4d9HJz5nBz1ZXochyb-J3vwLopdw_9H8';
+    const api_key = 'AIzaSyC4d9HJz5nBz1ZXochyb-J3vwLopdw_9H';
 
   return (
     <MapView

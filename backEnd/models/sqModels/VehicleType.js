@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       typeId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        
       },
       typeName: DataTypes.STRING,
       description: DataTypes.STRING
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'VehicleType',
+      timestamps: true
     }
   );
   return VehicleType;

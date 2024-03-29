@@ -14,16 +14,17 @@ module.exports = (sequelize, DataTypes) => {
       callId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        
       },
       callTime: DataTypes.DATE,
-      pickupLocation: DataTypes.GEOGRAPHY,
-      dropoffLocation: DataTypes.GEOGRAPHY,
+      pickupLocation: DataTypes.TEXT,
+      dropoffLocation: DataTypes.TEXT,
       status: DataTypes.ENUM('processing', 'completed')
     },
     {
       sequelize,
       modelName: 'CallCenter',
+      timestamps: true
     }
   );
   return CallCenter;
