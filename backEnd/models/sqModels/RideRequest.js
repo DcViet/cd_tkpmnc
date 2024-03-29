@@ -3,13 +3,18 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class RideRequest extends Model {
     static associate(models) {
-      // define association here
+      // Define associations here
       RideRequest.belongsTo(models.Driver, { foreignKey: 'driverId' });
       RideRequest.belongsTo(models.Customer, { foreignKey: 'customerId' });
     }
   }
   RideRequest.init(
     {
+      requestId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
       requestTime: DataTypes.DATE,
       pickupLocation: DataTypes.GEOGRAPHY,
       dropoffLocation: DataTypes.GEOGRAPHY,

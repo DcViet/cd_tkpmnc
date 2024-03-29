@@ -1,29 +1,29 @@
-"use strict";
+'use strict';
 
 const faker = require('faker');
 
 module.exports = {
-    async up(queryInterface, Sequelize) {
-        // Tạo dữ liệu mẫu cho bảng Tổng đài
-        const callCenterCalls = [];
-        for (let i = 0; i < 20; i++) {
-            const pickupLocation = Sequelize.literal(`POINT(${faker.address.longitude()} ${faker.address.latitude()})`);
-            const dropoffLocation = Sequelize.literal(`POINT(${faker.address.longitude()} ${faker.address.latitude()})`);
-            callCenterCalls.push({
-                customerId: faker.random.number({ min: 1, max: 10 }), // Chọn ngẫu nhiên một khách hàng từ ID 1 đến 10
-                pickupLocation: pickupLocation,
-                dropoffLocation: dropoffLocation,
-                status: 'processing',
-                createdAt: new Date(),
-                updatedAt: new Date()
-            });
-        }
+  up: async (queryInterface, Sequelize) => {
+    const callCentersData = [];
 
-        // Thực hiện chèn dữ liệu vào cơ sở dữ liệu
-        await queryInterface.bulkInsert("CallCenter", callCenterCalls, {});
-    },
-
-    async down(queryInterface, Sequelize) {
-        await queryInterface.bulkDelete("CallCenter", null, {});
+    // Tạo dữ liệu mẫu cho bảng CallCenters
+    for (let i = 0; i < 10; i++) {
+      callCentersData.push({
+        callTime: faker.date.past(),
+        pickupLocation: Sequelize.fn('ST_GeomFromText', 'POINT(' + faker.address.longitude() + ' ' + faker.address.latitude() + ')'),
+        dropoffLocation: Sequelize.fn('ST_GeomFromText', 'POINT(' + faker.address.longitude() + ' ' + faker.address.latitude() + ')'),
+        status: faker.random.arrayElement(['processing', 'completed']),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
     }
+
+    // Thêm dữ liệu vào bảng CallCenters
+    await queryInterface.bulkInsert('CallCenters', callCentersData, {});
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    // Xóa toàn bộ dữ liệu từ bảng CallCenters
+    await queryInterface.bulkDelete('CallCenters', null, {});
+  }
 };
