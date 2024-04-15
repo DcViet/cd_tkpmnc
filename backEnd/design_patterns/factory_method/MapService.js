@@ -1,3 +1,6 @@
+import { GoogleMap } from "./googleMap";
+import { OpenStreetMap } from "./openStreetMap";
+
 // Interface cho các dịch vụ bản đồ
 class MapService {
     constructor() {
@@ -10,6 +13,11 @@ class MapService {
     createMap() {
         throw new Error('Method "createMap" must be implemented.');
     }
+
+    // Phương thức trừu tượng để lấy thông tin tọa độ từ bản đồ
+    getCoordinates() {
+        throw new Error('Method "getCoordinates" must be implemented.');
+    }
 }
 
 // Lớp triển khai cho dịch vụ Google Maps
@@ -17,42 +25,27 @@ class GoogleMapsService extends MapService {
     createMap() {
         return new GoogleMap();
     }
+
+    getCoordinates(latitude, longitude) {
+        // Triển khai lấy thông tin tọa độ từ bản đồ của Google Maps
+        return { latitude, longitude };
+    };
 }
+
 
 // Lớp triển khai cho dịch vụ OpenStreet
 class OpenStreetService extends MapService {
     createMap() {
         return new OpenStreetMap();
     }
-}
 
-// Lớp đối tượng cho bản đồ của Google
-class GoogleMap {
-    // Triển khai các phương thức và thuộc tính cần thiết
-}
-
-// Lớp đối tượng cho bản đồ của OpenStreet
-class OpenStreetMap {
-    // Triển khai các phương thức và thuộc tính cần thiết
-}
-
-// Factory Method cho dịch vụ bản đồ
-class MapServiceFactory {
-    static createMapService(type) {
-        switch (type) {
-            case 'GoogleMaps':
-                return new GoogleMapsService();
-            case 'OpenStreet':
-                return new OpenStreetService();
-            default:
-                throw new Error('Invalid map service type.');
-        }
+    getCoordinates() {
+        // Triển khai lấy thông tin tọa độ từ bản đồ của OpenStreet
+        return {
+            latitude: 0,
+            longitude: 0
+        };
     }
 }
 
-// Sử dụng Factory Method để tạo dịch vụ bản đồ
-const googleMapsService = MapServiceFactory.createMapService('GoogleMaps');
-const googleMap = googleMapsService.createMap();
-
-const openstreetService = MapServiceFactory.createMapService('OpenStreet');
-const openstreetMap = openstreetService.createMap();
+export { GoogleMapsService, OpenStreetService };

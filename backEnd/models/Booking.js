@@ -1,11 +1,13 @@
 // models/Booking.js
 class Booking {
-    constructor(customer, bookingInfo) {
-        this.customer = customer;
-        this.bookingInfo = bookingInfo;
+    constructor(builder) {
+        this.phoneNumber = builder.phoneNumber;
+        this.address = builder.address;
+        this.gpsCoordinates = builder.gpsCoordinates;
+        this.bookingTime = builder.bookingTime || Date.now();
     }
 
-    confirm() {
+    confirmBooking() {
         return this.customer.getBooking().confirm();
     }
 }
