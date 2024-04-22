@@ -1,4 +1,4 @@
-import { Booking} from '../../models/Booking';
+import { Booking} from './Booking';
 
 // BookingBuilder.js
 class BookingBuilder {
@@ -37,16 +37,4 @@ class Director {
     }
 }
 
-// Sử dụng Director
-const bookingBuilder = new BookingBuilder("123456789", "123 Main St", "40.7128° N, 74.0060° W");
-const director = new Director(bookingBuilder);
-
-// Đặt xe hẹn giờ
-director.bookScheduledRide(Date.now() + (60 * 60 * 1000)); // Đặt xe hẹn giờ trong 1 giờ từ bây giờ
-
-// Đặt xe ngay
-director.bookImmediateRide();
-
-// Xây dựng và nhận đối tượng Booking cuối cùng
-const booking = director.buildBooking();
-booking.confirmBooking();
+module.exports = { BookingBuilder, Director };

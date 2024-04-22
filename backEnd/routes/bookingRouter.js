@@ -1,13 +1,13 @@
 // routes/bookingRoutes.js
 
 const express = require('express');
-const router = express.Router();
-const BookingController = require('../controllers/bookingController');
+const bookingrouter = express.Router();
+const bookingController= require('../controllers/bookingController');
 
 // Định nghĩa endpoint API để lấy dữ liệu mẫu của đặt xe
-router.get('/bookinginfo', BookingController.getSampleBooking);
+bookingrouter.get('/bookinginfo', bookingController.getSampleBooking);
 
-router.get('/', BookingController.get )
+bookingrouter.get('/', bookingController.get )
 
 
-module.exports = router;
+module.exports = bookingrouter;

@@ -1,15 +1,24 @@
-// models/Booking.js
-class Booking {
-    constructor(builder) {
-        this.phoneNumber = builder.phoneNumber;
-        this.address = builder.address;
-        this.gpsCoordinates = builder.gpsCoordinates;
-        this.bookingTime = builder.bookingTime || Date.now();
-    }
+//bookingService.js
+const express = require('express');
+const bodyParser = require('body-parser');
+const sequelize = require('./config/database');
+const bookingRoutes = require('../routes/bookingRouter');
 
-    confirmBooking() {
-        return this.customer.getBooking().confirm();
-    }
-}
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-module.exports = Booking;
+// Middleware
+app.use(bodyParser.json());
+
+// Routes
+app.use('/api', bookingRoutes);
+
+// Sync database models and start server
+sequelize.sync({ force: false }).then(() => {
+  console.log('Database synced');
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}).catch(err => {
+  console.error('Unable to sync database:', err);
+});
