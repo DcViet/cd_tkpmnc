@@ -1,20 +1,15 @@
+//tripRouter.js
 const express = require('express');
-const triprouter = express.Router();
+const router = express.Router();
 const tripController = require('../controllers/tripController');
 
-// POST /api/trips - Tạo yêu cầu chuyến đi mới
-triprouter.post('/', tripController.createTrip);
+// Định tuyến cho yêu cầu lấy danh sách yêu cầu chuyến đi cho tài xế
+router.get('/trip-requests', tripController.getTripRequests);
 
-// DELETE /api/trips/:tripId - Hủy chuyến đi
-triprouter.delete('/:tripId', tripController.cancelTrip);
+// Định tuyến cho yêu cầu chấp nhận một chuyến đi
+router.post('/trips/:tripId/accept', tripController.acceptTrip);
 
-// GET /api/trips - Lấy danh sách các chuyến đi của người dùng
-triprouter.get('/', tripController.getAllTrips);
+// Định tuyến cho yêu cầu hoàn thành một chuyến đi
+router.post('/trips/:tripId/complete', tripController.completeTrip);
 
-// GET /api/trips/:tripId/status - Lấy trạng thái của một chuyến đi
-triprouter.get('/:tripId/status', tripController.getTripStatus);
-
-// PUT /api/trips/:tripId/location - Cập nhật vị trí hiện tại của hành khách
-triprouter.put('/:tripId/location', tripController.updateLocation);
-
-module.exports = triprouter;
+module.exports = router;
