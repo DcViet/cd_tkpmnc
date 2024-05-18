@@ -1,3 +1,4 @@
+// man hinh hien thi ket qua search
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';

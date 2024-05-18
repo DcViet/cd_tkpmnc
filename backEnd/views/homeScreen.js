@@ -1,6 +1,6 @@
 // hienthi map trong man hinh chinh
-import { View, Text, Image } from 'react-native'
-import React from 'react'
+import { View, Text, Image } from 'react-native';
+import React from 'react';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
 import cars from './assets/data/car';

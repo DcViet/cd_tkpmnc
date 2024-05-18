@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import store from './store';
 
 import homeScreen from './views/homeScreen';
-import Search from './src/screens/Search';
+import searchScreen from './views/searchResultScreen';
 
 
 import SearchResult from './src/components/HomeScreen/SearchResult';
