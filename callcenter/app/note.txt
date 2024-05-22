@@ -1,0 +1,9 @@
+//folder: 
+
+app
+    index.js --- matches '/'
+    home.js --- matches '/home'
+    [user].js --- matches dynamic paths like '/expo' or '/evanbacon'
+ 
+settings
+    index.js --- matches '/settings'

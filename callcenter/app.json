@@ -13,13 +13,30 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyC4d9HJz5nBz1ZXochyb-J3vwLopdw_9H8"
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to show you nearby places."
+      },
+      "bundleIdentifier": "com.anonymous.callcenter"
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC4d9HJz5nBz1ZXochyb-J3vwLopdw_9H8"
+        }
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.callcenter"
     },
     "web": {
       "bundler": "metro",
