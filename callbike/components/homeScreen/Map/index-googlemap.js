@@ -1,3 +1,4 @@
+// google map
 import React, { Component, Fragment } from 'react';
 import { View, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';

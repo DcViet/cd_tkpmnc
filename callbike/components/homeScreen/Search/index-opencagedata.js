@@ -1,6 +1,6 @@
+// opencagedata
 import React, { Component } from 'react';
 import { View, TextInput, FlatList, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
 
 export default class Search extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class Search extends Component {
       query: '',
       results: [],
       searchFocused: false,
-      selectedLocation: null, // Lưu tọa độ vị trí đã chọn
+      selectedLocation: null, // Thêm state để lưu trữ tọa độ đã chọn
     };
   }
 
@@ -19,7 +19,7 @@ export default class Search extends Component {
       return;
     }
 
-    const apiKey = 'cd65eb49c25a4ace9e8555b1cca95c33'; // Thay thế bằng API Key của bạn
+    const apiKey = 'cd65eb49c25a4ace9e8555b1cca95c33';
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${apiKey}&limit=5`;
 
     try {
@@ -41,19 +41,21 @@ export default class Search extends Component {
   };
 
   handleSelectPlace = (place) => {
-    const selectedLocation = {
-      latitude: place.geometry.lat,
-      longitude: place.geometry.lng,
-      title: place.name,
-    };
     this.setState({ 
       query: place.name, 
       results: [], 
-      searchFocused: false, 
-      selectedLocation 
+      searchFocused: false,
+      selectedLocation: {
+        latitude: place.geometry.lat,
+        longitude: place.geometry.lng,
+      }, 
     });
     if (this.props.onLocationSelected) {
-      this.props.onLocationSelected(selectedLocation);
+      this.props.onLocationSelected({
+        latitude: place.geometry.lat,
+        longitude: place.geometry.lng,
+        title: place.name,
+      });
     }
   };
 
@@ -83,17 +85,9 @@ export default class Search extends Component {
           />
         )}
         {selectedLocation && (
-          <MapView
-            style={styles.mapView}
-            region={{
-              latitude: selectedLocation.latitude,
-              longitude: selectedLocation.longitude,
-              latitudeDelta: 0.0143,
-              longitudeDelta: 0.0134,
-            }}
-          >
-            <Marker coordinate={selectedLocation} />
-          </MapView>
+          <Text style={styles.selectedCoordinateText}>
+            Latitude: {selectedLocation.latitude}, Longitude: {selectedLocation.longitude}
+          </Text>
         )}
       </View>
     );
@@ -127,8 +121,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#DDD',
   },
-  mapView: {
-    height: 200,
-    marginTop: 20,
+  selectedCoordinateText: {
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

@@ -1,3 +1,4 @@
+// google map
 import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';

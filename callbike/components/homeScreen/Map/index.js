@@ -1,35 +1,59 @@
 import React, { Component, Fragment } from 'react';
-import { View, Image } from 'react-native';
-import MapView, { Marker, UrlTile, Polyline } from 'react-native-maps';
+import { View, StyleSheet, Text, Image } from 'react-native';
+import MapView, { Marker, Polyline, UrlTile } from 'react-native-maps';
 import * as Location from 'expo-location';
-import axios from 'axios';
-import { getPixelSize } from '../untils';
-import Search from '../Search';
-import Details from '../Details';
+
 import markerImage from '@/assets/marker.png';
-import backImage from '@/assets/history.png';
-import {
-  Back,
-  LocationBox,
-  LocationText,
-  LocationTimeBox,
-  LocationTimeText,
-  LocationTimeTextSmall,
-} from './styles';
+
+const Directions = ({ destination, origin, onReady }) => {
+  const [coordinates, setCoordinates] = React.useState([]);
+
+  React.useEffect(() => {
+    const getDirections = async () => {
+      try {
+        const response = await fetch(`http://router.project-osrm.org/route/v1/driving/${origin.longitude},${origin.latitude};${destination.longitude},${destination.latitude}?overview=full&geometries=geojson`);
+        const json = await response.json();
+        const points = json.routes[0].geometry.coordinates.map(point => ({
+          latitude: point[1],
+          longitude: point[0],
+        }));
+        setCoordinates(points);
+        if (onReady) {
+          onReady(json.routes[0]);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getDirections();
+  }, [destination, origin, onReady]);
+
+  return (
+    <Polyline
+      coordinates={coordinates}
+      strokeWidth={3}
+      strokeColor="#222"
+    />
+  );
+};
 
 export default class Map extends Component {
   state = {
-    region: null,
-    destination: null,
-    duration: null,
-    location: null,
-    route: null,
+    userRegion: null,
+    predefinedRegion: {
+      latitude: 10.7628356, // Sample latitude (San Francisco) 10.7628356,106.6799021
+      longitude: 106.6799021, // Sample longitude (San Francisco)
+      latitudeDelta: 0.0143,
+      longitudeDelta: 0.0134,
+    },
+    routeDuration: null,
   };
 
   async componentDidMount() {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
-      console.log('Quyền truy cập vị trí đã bị từ chối');
+      console.log('Location permission denied');
       return;
     }
 
@@ -38,8 +62,7 @@ export default class Map extends Component {
     });
 
     this.setState({
-      location: 'Your Location', // Bạn có thể thay đổi cách hiển thị địa chỉ
-      region: {
+      userRegion: {
         latitude,
         longitude,
         latitudeDelta: 0.0143,
@@ -48,107 +71,117 @@ export default class Map extends Component {
     });
   }
 
-  handleLocationSelected = (data, { geometry }) => {
-    const {
-      location: { lat: latitude, lng: longitude },
-    } = geometry;
-
-    this.setState({
-      destination: {
-        latitude,
-        longitude,
-        title: data.structured_formatting.main_text,
-      },
-    }, this.getRouteDirections);
-  };
-
-  getRouteDirections = async () => {
-    const { region, destination } = this.state;
-    if (!region || !destination) return;
-
-    const url = `http://router.project-osrm.org/route/v1/driving/${region.longitude},${region.latitude};${destination.longitude},${destination.latitude}?overview=full&geometries=geojson`;
-
-    try {
-      const response = await axios.get(url);
-      const routeData = response.data.routes[0];
-      const coordinates = routeData.geometry.coordinates.map(([longitude, latitude]) => ({
-        latitude,
-        longitude,
-      }));
-      this.setState({ route: coordinates, duration: Math.floor(routeData.duration / 60) });
-      this.mapView.fitToCoordinates(coordinates, {
-        edgePadding: {
-          right: getPixelSize(50),
-          left: getPixelSize(50),
-          top: getPixelSize(50),
-          bottom: getPixelSize(350),
-        },
-      });
-    } catch (error) {
-      console.error('Error fetching directions:', error);
-    }
-  };
-
-  handleBack = () => {
-    this.setState({ destination: null, route: null });
+  handleRouteReady = (result) => {
+    this.setState({ routeDuration: Math.floor(result.duration / 60) });
   };
 
   render() {
-    const { region, destination, duration, location, route } = this.state;
-    const thunderforestApiKey = 'c82c81c3ae1f42b48cf72ff4655754c1'; // Thay bằng API key của bạn
+    const { userRegion, predefinedRegion, routeDuration } = this.state;
+    const thunderforestApiKey = 'c82c81c3ae1f42b48cf72ff4655754c1'; // Replace with your Thunderforest API key
 
     return (
       <View style={{ flex: 1 }}>
-        <MapView
-          style={{ flex: 1 }}
-          region={region}
-          showsUserLocation
-          loadingEnabled
-          ref={el => (this.mapView = el)}>
-          <UrlTile
-            urlTemplate={`https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`}
-            maximumZ={19}
-          />
-          {destination && route && (
-            <Fragment>
-              <Polyline
-                coordinates={route}
-                strokeWidth={3}
-                strokeColor="#222"
+        {userRegion && (
+          <Fragment>
+            <MapView
+              style={styles.map}
+              region={userRegion}
+              showsUserLocation
+              loadingEnabled
+            >
+              {/* <UrlTile
+                urlTemplate={`https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`}
+                maximumZ={19}
+              /> */}
+              <Marker
+                coordinate={userRegion}
+                anchor={{ x: 0.5, y: 0.5 }}
+                image={markerImage}
+              />
+            </MapView>
+
+            <MapView
+              style={styles.map}
+              region={predefinedRegion}
+              loadingEnabled
+            >
+              {/* <UrlTile
+                urlTemplate={`https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`}
+                maximumZ={19}
+              /> */}
+              <Marker
+                coordinate={predefinedRegion}
+                anchor={{ x: 0.5, y: 0.5 }}
+                image={markerImage}
+              />
+            </MapView>
+
+            <MapView
+              style={styles.map}
+              initialRegion={{
+                latitude: (userRegion.latitude + predefinedRegion.latitude) / 2,
+                longitude: (userRegion.longitude + predefinedRegion.longitude) / 2,
+                latitudeDelta: Math.abs(userRegion.latitude - predefinedRegion.latitude) + 0.1,
+                longitudeDelta: Math.abs(userRegion.longitude - predefinedRegion.longitude) + 0.1,
+              }}
+              ref={el => (this.mapView = el)}
+              showsUserLocation
+              loadingEnabled
+            >
+              {/* <UrlTile
+                urlTemplate={`https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`}
+                maximumZ={19}
+              /> */}
+              <Marker
+                coordinate={userRegion}
+                anchor={{ x: 0.5, y: 0.5 }}
+                image={markerImage}
               />
               <Marker
-                coordinate={destination}
-                anchor={{ x: 0, y: 0 }}
-                image={markerImage}>
-                <LocationBox>
-                  <LocationText>{destination.title}</LocationText>
-                </LocationBox>
-              </Marker>
+                coordinate={predefinedRegion}
+                anchor={{ x: 0.5, y: 0.5 }}
+                image={markerImage}
+              />
+              <Directions
+                origin={userRegion}
+                destination={predefinedRegion}
+                onReady={this.handleRouteReady}
+              />
+            </MapView>
 
-              <Marker coordinate={region} anchor={{ x: 0, y: 0 }}>
-                <LocationBox>
-                  <LocationTimeBox>
-                    <LocationTimeText>{duration}</LocationTimeText>
-                    <LocationTimeTextSmall>MIN</LocationTimeTextSmall>
-                  </LocationTimeBox>
-                  <LocationText>{location}</LocationText>
-                </LocationBox>
-              </Marker>
-            </Fragment>
-          )}
-        </MapView>
-
-        {destination ? (
-          <Fragment>
-            <Back onPress={this.handleBack}>
-              <Image source={backImage} />
-            </Back>
-            <Details />
+            {routeDuration && (
+              <View style={styles.infoBox}>
+                <Text style={styles.infoText}>Duration: {routeDuration} min</Text>
+              </View>
+            )}
           </Fragment>
-        ) : (
-          <Search onLocationSelected={this.handleLocationSelected} />
         )}
       </View>
     );
   }
+}
+
+const styles = StyleSheet.create({
+  map: {
+    flex: 1,
+    marginBottom: 10,
+  },
+  infoBox: {
+    position: 'absolute',
+    bottom: 10,
+    left: 10,
+    right: 10,
+    padding: 10,
+    backgroundColor: '#FFF',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#DDD',
+  },
+  infoText: {
+    fontSize: 16,
+  },
+});
+
+function getPixelSize(pixels) {
+  return pixels;
 }
