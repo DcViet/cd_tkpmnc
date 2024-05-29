@@ -5,13 +5,12 @@ import { Image, StyleSheet, View } from 'react-native';
 // import { ThemedText } from '@/components/ThemedText';
 // import { ThemedView } from '@/components/ThemedView';
 
-import Map from '@/components/homeScreen/Map';
+import App from '@/components/homeScreen';
 
 export default function HomeScreen() {
 
   return (
-    
-        <Map />
+        <App />
   );
 }
 
