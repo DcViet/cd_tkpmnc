@@ -13,5 +13,7 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "components/homeScreen/Map/index.js", "components/homeScreen/Map/styles.js"  ]
+, "components/homeScreen/Map/index.js", 
+"components/homeScreen/Map/styles.js", 
+"components/images.d.ts" ]
 }

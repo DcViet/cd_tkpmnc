@@ -86,43 +86,28 @@
 
 // export default HomePage;
 
-// Trong file App.js hoặc file khác bạn chọn làm entry point cho ứng dụng
-// import React from 'react';
-// // import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
-// import LoginForm from '../loginScreen/Login';
-// import InfoForm from '../infoScreen';
-// import MainScreen from '../mainScreen';
-
-// const Stack = createStackNavigator();
-
-// const HomePage = () => {
-//   return (
-//       <Stack.Navigator>
-//         <Stack.Screen name="Login" component={LoginForm} />
-//         <Stack.Screen name="Info" component={InfoForm} />
-//         <Stack.Screen name="MainScreen" component={MainScreen} />
-//       </Stack.Navigator>
-//   );
-// };
-
-// export default HomePage;
 
 
 import React from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Button, Text } from 'react-native-elements';
+import { useDispatch } from 'react-redux';
+import { performLogout } from '../loginScreen/actions/authSlice';
+import { useRouter } from 'expo-router';
 
-const HomePage = ({ navigation }) => {
+const HomePage = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    dispatch(performLogout());
+    router.replace('/index'); // Điều hướng đến trang login sau khi logout
+  };
+
   return (
     <View style={styles.container}>
-      <Button
-        title="Đăng nhập"
-        onPress={() => navigation.navigate('Login')}
-      />
-      <Button
-        title="Thông tin"
-        onPress={() => navigation.navigate('Info')}
-      />
+      <Text h1>Home</Text>
+      <Button title="Logout" onPress={handleLogout} buttonStyle={styles.button} />
     </View>
   );
 };
@@ -132,16 +117,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    paddingHorizontal: 20,
+    padding: 20,
   },
   button: {
-    marginVertical: 10,
+    marginTop: 20,
     width: '100%',
   },
 });
 
 export default HomePage;
+
 
 
 

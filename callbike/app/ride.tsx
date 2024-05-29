@@ -2,13 +2,14 @@ import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { useLocalSearchParams } from 'expo-router';
+import RidePage from '@/components/yourRide';
 
-import HomePage from '@/components/home';
+export default function RideScreen() {
+  const { selectedCarType, userName } = useLocalSearchParams<{ selectedCarType: 'economy' | 'luxury' | 'family'; userName: string }>();
 
-
-export default function HomeScreen() {
+  // Type assertion to ensure selectedCarType is not undefined
+  const carType: 'economy' | 'luxury' | 'family' = selectedCarType as 'economy' | 'luxury' | 'family';
 
   return (
     <ParallaxScrollView
@@ -20,12 +21,12 @@ export default function HomeScreen() {
         />
       }
     >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HomePage />
-      </ThemedView>
-
-      
+      <View style={styles.titleContainer}>
+        {/* Render RidePage only if selectedCarType is defined */}
+        {selectedCarType !== undefined && (
+          <RidePage selectedCarType={carType} userName={userName} />
+        )}
+      </View>
     </ParallaxScrollView>
   );
 }

@@ -14,14 +14,27 @@
 // export default store;
 
 
-import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../actions/authSlice'; 
+// import { configureStore } from '@reduxjs/toolkit';
+// import authReducer from '../actions/authSlice'; 
 
-const store = configureStore({
-  reducer: {
-    auth: authReducer,
-  },
+// const store = configureStore({
+//   reducer: {
+//     auth: authReducer,
+//   },
+// });
+
+// export default store;
+
+
+import { combineReducers } from 'redux';
+import authReducer from '../actions/authSlice';
+// import other reducers
+
+const rootReducer = combineReducers({
+  auth: authReducer,
+  // other reducers
 });
 
-export default store;
+export type RootState = ReturnType<typeof rootReducer>;
 
+export default rootReducer;
