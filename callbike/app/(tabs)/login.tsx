@@ -365,7 +365,195 @@
 
 
 
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+// import { StyleSheet, View } from 'react-native';
+// import { ThemedText } from '@/components/ThemedText';
+// import { ThemedView } from '@/components/ThemedView';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { checkAuthStatus } from '@/components/loginScreen/actions/authSlice';
+// import LoginForm from '@/components/loginScreen/Login';
+// import { RootState, AppDispatch } from '@/components/loginScreen/store';
+// import CarSelectionScreen from '@/components/carSelection';
+
+// const LoginScreen: React.FC = () => {
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const dispatch: AppDispatch = useDispatch();
+//   const auth = useSelector((state: RootState) => state.auth);
+
+//   useEffect(() => {
+//     dispatch(checkAuthStatus()).then(() => {
+//       if (auth.isAuthenticated) {
+//         setIsLoggedIn(true);
+//       }
+//     });
+//   }, [dispatch, auth.isAuthenticated]);
+
+//   const handleLogin = () => {
+//     setIsLoggedIn(true);
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       {!isLoggedIn ? (
+//         <LoginFormContainer onLogin={handleLogin} />
+//       ) : (
+//         <LoggedInContent />
+//       )}
+//     </View>
+//   );
+// };
+
+// const LoginFormContainer: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
+//   return (
+//     <ThemedView style={styles.formContainer}>
+//       <ThemedView style={styles.titleContainer}>
+//         <ThemedText type="title" style={styles.title}>Welcome!</ThemedText>
+//       </ThemedView>
+//       <LoginForm onLogin={onLogin} />
+//     </ThemedView>
+//   );
+// };
+
+// const LoggedInContent: React.FC = () => {
+//   return (
+//     <ThemedView style={styles.loggedContainer}>
+
+//       <CarSelectionScreen />
+      
+//     </ThemedView>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     padding: 20,
+//     backgroundColor: '#F5F5F5',
+//   },
+//   formContainer: {
+//     width: '100%',
+//     maxWidth: 400,
+//   },
+//   titleContainer: {
+//     alignItems: 'center',
+//     marginBottom: 30,
+//     marginTop: 30,
+//   },
+//   loggedContainer: {
+//     // width: '100%',
+//     // maxWidth: 800,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+
+//   },
+//   title: {
+//     fontSize: 30,
+//     fontWeight: 'bold',
+//   },
+
+// });
+
+// export default LoginScreen;
+ 
+
+
+
+// import React, { useEffect, useState } from 'react';
+// import { StyleSheet, View } from 'react-native';
+// import { ThemedText } from '@/components/ThemedText';
+// import { ThemedView } from '@/components/ThemedView';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { checkAuthStatus } from '@/components/loginScreen/actions/authSlice';
+// import LoginForm from '@/components/loginScreen/Login';
+// import { RootState, AppDispatch } from '@/components/loginScreen/store';
+// import CarSelectionScreen from '@/components/carSelection';
+
+// const LoginScreen: React.FC = () => {
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const dispatch: AppDispatch = useDispatch();
+//   const auth = useSelector((state: RootState) => state.auth);
+
+//   useEffect(() => {
+//     dispatch(checkAuthStatus()).then(() => {
+//       if (auth.isAuthenticated) {
+//         setIsLoggedIn(true);
+//       }
+//     });
+//   }, [dispatch, auth.isAuthenticated]);
+
+//   const handleLogin = () => {
+//     setIsLoggedIn(true);
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       {!isLoggedIn ? (
+//         <LoginFormContainer onLogin={handleLogin} />
+//       ) : (
+//         <LoggedInContent />
+//       )}
+//     </View>
+//   );
+// };
+
+// const LoginFormContainer: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
+//   return (
+//     <ThemedView style={styles.formContainer}>
+//       <ThemedView style={styles.titleContainer}>
+//         <ThemedText type="title" style={styles.title}>Welcome!</ThemedText>
+//       </ThemedView>
+//       <LoginForm onLogin={onLogin} />
+//     </ThemedView>
+//   );
+// };
+
+// const LoggedInContent: React.FC = () => {
+//   return (
+//     <ThemedView style={styles.loggedContainer}>
+
+//       <CarSelectionScreen />
+      
+//     </ThemedView>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     padding: 20,
+//     backgroundColor: '#F5F5F5',
+//   },
+//   formContainer: {
+//     width: '100%',
+//     maxWidth: 400,
+//   },
+//   titleContainer: {
+//     alignItems: 'center',
+//     marginBottom: 30,
+//     marginTop: 30,
+//   },
+//   loggedContainer: {
+//     // width: '100%',
+//     // maxWidth: 800,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+
+//   },
+//   title: {
+//     fontSize: 30,
+//     fontWeight: 'bold',
+//   },
+
+// });
+
+// export default LoginScreen;
+
+
+import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -373,32 +561,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { checkAuthStatus } from '@/components/loginScreen/actions/authSlice';
 import LoginForm from '@/components/loginScreen/Login';
 import { RootState, AppDispatch } from '@/components/loginScreen/store';
-import CarSelectionScreen from '@/components/carSelection';
+import { useRouter } from 'expo-router';
 
 const LoginScreen: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dispatch: AppDispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(checkAuthStatus()).then(() => {
       if (auth.isAuthenticated) {
-        setIsLoggedIn(true);
+        router.push('/carSelection'); // Chuyển hướng đến CarSelectionScreen
       }
     });
-  }, [dispatch, auth.isAuthenticated]);
+  }, [dispatch, auth.isAuthenticated, router]);
 
   const handleLogin = () => {
-    setIsLoggedIn(true);
+    router.push('/carSelection'); // Chuyển hướng đến CarSelectionScreen
   };
 
   return (
     <View style={styles.container}>
-      {!isLoggedIn ? (
-        <LoginFormContainer onLogin={handleLogin} />
-      ) : (
-        <LoggedInContent />
-      )}
+      <LoginFormContainer onLogin={handleLogin} />
     </View>
   );
 };
@@ -410,16 +594,6 @@ const LoginFormContainer: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
         <ThemedText type="title" style={styles.title}>Welcome!</ThemedText>
       </ThemedView>
       <LoginForm onLogin={onLogin} />
-    </ThemedView>
-  );
-};
-
-const LoggedInContent: React.FC = () => {
-  return (
-    <ThemedView style={styles.loggedContainer}>
-
-      <CarSelectionScreen />
-      
     </ThemedView>
   );
 };
@@ -441,18 +615,10 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     marginTop: 30,
   },
-  loggedContainer: {
-    // width: '100%',
-    // maxWidth: 800,
-    justifyContent: 'center',
-    alignItems: 'center',
-
-  },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
   },
-
 });
 
 export default LoginScreen;

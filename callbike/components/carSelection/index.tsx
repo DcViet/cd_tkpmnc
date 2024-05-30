@@ -4,7 +4,7 @@ import { View, StyleSheet, Button, ScrollView } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import CarButton from '../carButton';
 
-const CarSelectionScreen: React.FC = () => {
+const CarSelection: React.FC = () => {
   const [selected, setSelected] = useState<'economy' | 'luxury' | 'family'>('economy');
   const router = useRouter();
   const { userName } = useLocalSearchParams<{ userName: string }>();
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CarSelectionScreen;
+export default CarSelection;
