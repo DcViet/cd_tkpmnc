@@ -179,7 +179,7 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="ride" options={{ headerShown: false }} />
-          <Stack.Screen name="carSelection" options={{ headerShown: false }} />
+          <Stack.Screen name="mapcarSelection" options={{ headerShown: false }} />
           <Stack.Screen name="not-found" />
         </Stack>
       </ThemeProvider>

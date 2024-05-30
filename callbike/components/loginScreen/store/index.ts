@@ -19,9 +19,14 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import authReducer from '../actions/authSlide';
 
+import mapSlice from '../../redux/mapSlice';
+import carSlice from '../../redux/carSlice';
+
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    map: mapSlice,
+    car: carSlice,
   },
 });
 

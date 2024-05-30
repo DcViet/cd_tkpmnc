@@ -571,13 +571,13 @@ const LoginScreen: React.FC = () => {
   useEffect(() => {
     dispatch(checkAuthStatus()).then(() => {
       if (auth.isAuthenticated) {
-        router.push('/carSelection'); // Chuyển hướng đến CarSelectionScreen
+        router.push('/mapcarSelection'); 
       }
     });
   }, [dispatch, auth.isAuthenticated, router]);
 
   const handleLogin = () => {
-    router.push('/carSelection'); // Chuyển hướng đến CarSelectionScreen
+    router.push('/mapcarSelection'); 
   };
 
   return (

@@ -42,8 +42,8 @@ export default class Map extends Component {
   state = {
     userRegion: null,
     predefinedRegion: {
-      latitude: 10.7628356, // Sample latitude (San Francisco) 10.7628356,106.6799021
-      longitude: 106.6799021, // Sample longitude (San Francisco)
+      latitude: 10.7628356, 
+      longitude: 106.6799021, 
       latitudeDelta: 0.0143,
       longitudeDelta: 0.0134,
     },
