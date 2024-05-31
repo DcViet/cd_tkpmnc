@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 5,
     backgroundColor: '#F5F5F5',
+    borderRadius: 12,
   },
   upperSection: {
     marginBottom: 20,

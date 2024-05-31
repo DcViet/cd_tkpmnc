@@ -108,9 +108,9 @@ const Container = styled(TouchableOpacity)<ContainerProps>`
 `;
 
 const CarImage = styled.Image`
-  width: 60px;
+  width: 100px;
   height: 60px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 `;
 
 interface TitleProps {

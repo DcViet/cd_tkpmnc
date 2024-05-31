@@ -43,7 +43,7 @@ const mapSlice = createSlice({
       longitude: null,
     },
     pickupLocation: {  // Thêm trạng thái cho vị trí đón
-      formattedAddress: '',
+      formattedAddress: 'Vị trí hiện tại',
       latitude: null,
       longitude: null,
     },

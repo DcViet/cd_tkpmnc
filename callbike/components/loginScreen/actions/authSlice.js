@@ -272,7 +272,7 @@ const fakeApiCall = (username, password) =>
           user: { first_name: 'Truong', last_name: 'Duc' },
         });
       } else {
-        reject(new Error('sai ten dang nhap hoac mat khau'));
+        reject(new Error('sai'));
       }
     }, 1000);
   });

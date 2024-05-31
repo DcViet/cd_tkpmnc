@@ -94,6 +94,7 @@ import { Button, Text } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { performLogout } from '../loginScreen/actions/authSlice';
 import { useRouter } from 'expo-router';
+import { ThemedText } from '@/components/ThemedText';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -101,13 +102,13 @@ const HomePage = () => {
 
   const handleLogout = () => {
     dispatch(performLogout());
-    router.replace('/index'); // Điều hướng đến trang login sau khi logout
+    router.replace('/login'); 
   };
 
   return (
     <View style={styles.container}>
-      <Text h1>Home</Text>
-      <Button title="Logout" onPress={handleLogout} buttonStyle={styles.button} />
+      <ThemedText>Home</ThemedText>
+      <Button title="Login" onPress={handleLogout} buttonStyle={styles.button} />
     </View>
   );
 };
