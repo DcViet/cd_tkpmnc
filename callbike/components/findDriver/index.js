@@ -312,10 +312,13 @@ import { useSelector } from 'react-redux';
 import MapView, { Marker } from 'react-native-maps';
 import DirectionsMap from '../directionsMap';
 
+import { useRouter } from 'expo-router';
+
 const FindDriver = () => {
   const pickupLocation = useSelector(state => state.map.pickupLocation);
   const [tripDetails, setTripDetails] = useState(null);
   const [driverArrived, setDriverArrived] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const driverData = {
